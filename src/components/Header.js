@@ -16,10 +16,10 @@ class Header extends Component {
 		return (
 		<div>
 			<Navbar brand='logo' right>
-				<NavItem href=''><Icon>search</Icon></NavItem>
-				<NavItem href=''><Icon>view_module</Icon></NavItem>
-				<NavItem href=''><Icon>refresh</Icon></NavItem>
-				<NavItem href=''><Icon>more_vert</Icon></NavItem>
+				<NavItem><Icon>search</Icon></NavItem>
+				<NavItem><Icon>view_module</Icon></NavItem>
+				<NavItem><Icon>refresh</Icon></NavItem>
+				<NavItem><Icon>more_vert</Icon></NavItem>
 			</Navbar>
 		</div>
 		);
