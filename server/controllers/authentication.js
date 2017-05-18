@@ -39,10 +39,11 @@ exports.signup = function(req, res, next){
 			res.json({token: tokenForUser(user)});
 		});
 	});
-	
-	
-	
-	
-	
 	//respond user was created
+}
+
+exports.signin = function(req, res, next){
+	//give a token to user
+	res.send({token: tokenForUser(req.user)});
+	
 }
