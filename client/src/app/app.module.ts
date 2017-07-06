@@ -2,31 +2,28 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MdTabsModule, MdDatepickerModule} from '@angular/material';
-import {Routes, RouterModule} from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import {AppComponent} from './app.component';
 import {AdminComponent} from './admin/admin.component';
 import { HomeComponent } from './home/home.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
-const appRoutes: Routes = [
-    {path: '', component: HomeComponent},
-    {path: 'home', redirectTo: "/",},
-    {path: 'admin', component: AdminComponent}
-];
+import {AppRoutingModule} from './app-routing.module';
 
 @NgModule({
     declarations: [
         AppComponent,
         AdminComponent,
-        HomeComponent
+        HomeComponent,
+        PageNotFoundComponent
     ],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
         FlexLayoutModule,
         MdTabsModule, MdDatepickerModule,
-        RouterModule.forRoot(appRoutes)
+        AppRoutingModule
     ],
     providers: [],
     bootstrap: [AppComponent]
