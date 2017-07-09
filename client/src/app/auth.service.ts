@@ -1,3 +1,4 @@
+/*
 export class AuthService{
     signedIn = false;
 
@@ -17,4 +18,4 @@ export class AuthService{
     signOut(){
         this.signedIn = false;
     }
-}
+}*/

@@ -44,3 +44,4 @@
 
 # Server
 /server/node_modules
+/server/config.js

@@ -1,4 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
 import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MdTabsModule, MdButtonModule, MdInputModule} from '@angular/material';
@@ -11,10 +12,12 @@ import {HomeComponent} from './home/home.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 
 import {AppRoutingModule} from './app-routing.module';
-import {AuthService} from "./auth.service";
-import {AuthGuard} from "./auth-guard.service";
+import {AuthService} from "./admin/auth/auth.service";
+import {AuthGuard} from "./admin/auth/auth-guard.service";
 import { AdminContentComponent } from './admin/admin-content/admin-content.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { SignupComponent } from './admin/auth/signup/signup.component';
+import { SigninComponent } from './admin/auth/signin/signin.component';
 
 @NgModule({
     declarations: [
@@ -23,10 +26,12 @@ import { ErrorPageComponent } from './error-page/error-page.component';
         HomeComponent,
         PageNotFoundComponent,
         AdminContentComponent,
-        ErrorPageComponent
+        ErrorPageComponent,
+        SignupComponent,
+        SigninComponent
     ],
     imports: [
-        BrowserModule,
+        BrowserModule, HttpModule,
         BrowserAnimationsModule,
         FlexLayoutModule,
         ReactiveFormsModule,
