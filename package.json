@@ -19,7 +19,6 @@
   },
   "homepage": "https://github.com/UniquePsevdo/secrets#readme",
   "dependencies": {
-    "concurrently": "^3.5.0",
     "npm-run-all": "^4.0.2"
   }
 }
