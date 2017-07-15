@@ -18,7 +18,7 @@
     "url": "https://github.com/UniquePsevdo/secrets/issues"
   },
   "homepage": "https://github.com/UniquePsevdo/secrets#readme",
-  "dependencies": {
+  "devDependencies": {
     "npm-run-all": "^4.0.2"
   }
 }
