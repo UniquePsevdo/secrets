@@ -6,7 +6,10 @@
   "scripts": {
     "start": "npm-run-all --parallel client server",
     "server": "npm run dev --prefix server",
-    "client": "npm start --prefix client"
+    "client": "npm start --prefix client",
+    "start2": "npm-run-all --parallel client2 server2",
+    "server2": "cd server && node server.start.js",
+    "client2": "cd client && node client.start.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +22,7 @@
   },
   "homepage": "https://github.com/UniquePsevdo/secrets#readme",
   "devDependencies": {
-    "npm-run-all": "^4.0.2"
+    "npm-run-all": "^4.0.2",
+    "shelljs": "^0.7.8"
   }
 }

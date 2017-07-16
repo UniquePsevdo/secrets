@@ -22,7 +22,7 @@ export class SignupComponent implements OnInit {
             'email': new FormControl(null, [Validators.required, Validators.email]),
             'password': new FormControl(null, Validators.required)
         });
-    }
+    };
 
     onSubmit() {
         this.authService.signUp(this.signUpForm.value)
@@ -34,6 +34,6 @@ export class SignupComponent implements OnInit {
                 }
             )
 
-    }
+    };
 
 }

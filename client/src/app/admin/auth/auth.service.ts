@@ -1,6 +1,8 @@
 import {Injectable} from "@angular/core";
-import {Http} from "@angular/http";
+import {Http, Headers, Response} from "@angular/http";
 import { environment } from '../../../environments/environment';
+import 'rxjs/Rx';
+import {Observable} from "rxjs";
 
 @Injectable()
 export class AuthService{
@@ -16,17 +18,28 @@ export class AuthService{
         return promise;
     };
 
-    signIn(){
-        this.signedIn = true;
-        this.http.post(`${environment.apiUrl}signin`, {data:'test'});
+    signIn(data){
+        let body = JSON.stringify(data);
+        let headers = new Headers({'Content-Type' : 'application/json'});
+        return this.http.post(`${environment.apiUrl}signin`, body, {headers})
+            .map((response: Response)=> response.json())
+            .catch((error: Response)=> Observable.throw(error.json()));
     }
 
     signUp(data){
-        return this.http.post(`${environment.apiUrl}signup`, data)
+        let body = JSON.stringify(data);
+        let headers = new Headers({'Content-Type' : 'application/json'});
+        return this.http.post(`${environment.apiUrl}signup`, body, {headers})
+            .map((response: Response)=> response.json())
+            .catch((error: Response)=> Observable.throw(error.json()));
     }
 
     sigOut(){
         this.signedIn = false;
         //todo:...
+    }
+
+    getToken(){
+
     }
 }

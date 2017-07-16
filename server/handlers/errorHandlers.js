@@ -5,7 +5,9 @@ exports.notFound = (req, res, next) => {
 };
 
 exports.developmentErrors = (err, req, res) => {
-	console.log(err);
+	if(err){
+		console.log('developmentErrors', err);
+	}
 	res.status(err.status || 500);
 	res.render('error', {
 		message: err.message,
@@ -14,6 +16,9 @@ exports.developmentErrors = (err, req, res) => {
 };
 
 exports.productionErrors = (err, req, res, next) => {
+	if(err){
+		console.log('productionErrors', err);
+	}
 	res.status(err.status || 500);
 	res.render('error', {
 		message: err.message,

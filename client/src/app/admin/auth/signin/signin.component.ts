@@ -22,10 +22,19 @@ export class SigninComponent implements OnInit {
             'email': new FormControl(null, [Validators.required, Validators.email]),
             'password': new FormControl(null, Validators.required)
         });
-    }
+    };
 
     onSubmit() {
-        console.log(this.signInForm.value);
-    }
+        this.authService.signIn(this.signInForm.value)
+            .subscribe((data)=> {
+                    console.log(data);
+                    localStorage.setItem('token', data.token);
+                },
+                (err)=> {
+                    console.log(err);
+                }
+            )
+
+    };
 
 }

@@ -1,29 +1,5 @@
 <div class="padding">
-   <!-- <button md-raised-button color="primary" (click)="onSignIn()">Sign In</button>
-    <button md-raised-button color="primary" (click)="onSignOut()">Sign Out</button>
-    <button md-raised-button color="primary" (click)="goToContent()">goToContent</button>
-    <div fxLayout="row" fxLayoutAlign="center center">
-        <div fxFlex="50%"></div>
-        <div fxFlex="50%"></div>
-    </div>-->
-    <!--<form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
-        <div fxLayout="row" fxLayoutAlign="center center">
-            <md-input-container fxFlex="50%" style="padding:0 10px 0 0">
-                <input mdInput formControlName="email" type="email" placeholder="email" >&lt;!&ndash;disabled value="Google"&ndash;&gt;
-                <md-error *ngIf="!signInForm.get('email').valid && signInForm.get('email').touched">
-                    <span *ngIf="signInForm.get('email').errors.required">This field is required</span>
-                    <span *ngIf="signInForm.get('email').errors.email && !signInForm.get('email').errors.required">Email is invalid</span>
-                </md-error>
-            </md-input-container>
-            <md-input-container fxFlex="50%" style="padding:0 0 0 10px">
-                <input mdInput formControlName="password" type="password" placeholder="password" >&lt;!&ndash;disabled value="Google"&ndash;&gt;
-                <md-error *ngIf="!signInForm.get('password').valid && signInForm.get('password').touched">
-                    <span *ngIf="signInForm.get('password').errors.required">This field is required</span>
-                </md-error>
-            </md-input-container>
-        </div>
-        <button md-raised-button color="primary" [disabled]="!signInForm.valid" type="submit">Submit</button>&lt;!&ndash;(click)=""&ndash;&gt;
-    </form>-->
     <app-signup></app-signup>
+    <app-signin></app-signin>
     <router-outlet></router-outlet>
 </div>

@@ -14,7 +14,21 @@ mongoose.connect('mongodb://VolodymyrSydorov:My_1ntent10ns@ds143191.mlab.com:431
 
 //app setup
 app.use(morgan('combined'));
-app.use(cors());
+
+/*app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');*/
+
+var whitelist = ['http://localhost:4200'];
+var corsOptions = {
+	origin: function (origin, callback) {
+		if (whitelist.indexOf(origin) !== -1) {
+			callback(null, true)
+		} else {
+			callback(new Error('Not allowed by CORS'))
+		}
+	}
+}
+app.use(cors(corsOptions));
 app.use(bodyParser.json({type: '*/*'}));
 
 /*app.use('/api/', apiRouter);
@@ -24,12 +38,12 @@ app.use('/api/', apiRouter);
 app.use('/', router);
 
 app.use(notFound);
-
+console.log(process.env.NODE_ENV);
 if (process.env.NODE_ENV === 'development') {
 	app.use(developmentErrors);
+}else{
+	app.use(productionErrors);
 }
-
-app.use(productionErrors);
 
 //server setup
 const port = process.env.PORT || 3090;
