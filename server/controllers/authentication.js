@@ -4,7 +4,8 @@ const config = require('../config');
 
 function tokenForUser(user){
 	const timestamp = new Date().getTime();
-	return jwt.encode({sub: user.id, iat: timestamp}, config.secret);
+	console.log(1);
+	return jwt.encode({sub: user.id, iat: timestamp, exp: Math.round(Date.now() / (1000 + 5 * 60 * 60))}, config.secret);
 }
 
 exports.signup = function(req, res, next){
@@ -43,7 +44,6 @@ exports.signup = function(req, res, next){
 }
 
 exports.signin = function(req, res, next){
-	console.log('111111111111111111111111111111');
 	//give a token to user
 	res.send({token: tokenForUser(req.user)});
 }

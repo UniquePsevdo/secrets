@@ -2,7 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MdTabsModule, MdButtonModule, MdInputModule} from '@angular/material';
+import {MdTabsModule, MdButtonModule, MdInputModule, MdRadioModule} from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {ReactiveFormsModule} from '@angular/forms';
 
@@ -35,7 +35,7 @@ import { SigninComponent } from './admin/auth/signin/signin.component';
         BrowserAnimationsModule,
         FlexLayoutModule,
         ReactiveFormsModule,
-        MdTabsModule, MdButtonModule, MdInputModule,
+        MdTabsModule, MdButtonModule, MdInputModule, MdRadioModule,
         AppRoutingModule
     ],
     providers: [AuthService, AuthGuard],

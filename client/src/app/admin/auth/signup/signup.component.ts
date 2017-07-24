@@ -12,7 +12,7 @@ import {environment} from '../../../../environments/environment';
 export class SignupComponent implements OnInit {
 
     constructor(private authService: AuthService, private router: Router, private route: ActivatedRoute) {
-        console.log(environment);
+        //console.log('environment: ', environment);
     }
 
     signUpForm: FormGroup;
@@ -27,7 +27,7 @@ export class SignupComponent implements OnInit {
     onSubmit() {
         this.authService.signUp(this.signUpForm.value)
             .subscribe((response)=> {
-                    console.log(response);
+                    console.log('response: ',response);
                 },
                 (err)=> {
                     console.log(err);

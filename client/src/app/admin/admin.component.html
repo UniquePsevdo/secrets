@@ -1,5 +1,17 @@
 <div class="padding">
-    <app-signup></app-signup>
-    <app-signin></app-signin>
+    <md-tab-group>
+        <md-tab *ngIf="authService.signedIn===false" label="Sign In">
+            <app-signin></app-signin>
+        </md-tab>
+        <md-tab *ngIf="authService.signedIn===true" label="Content">
+            <app-admin-content></app-admin-content>
+        </md-tab>
+        <md-tab *ngIf="authService.signedIn===true" label="Sign Out">
+            <div>Sign Out button</div>
+        </md-tab>
+        <md-tab *ngIf="authService.signedIn===false" label="Sign Up">
+            <app-signup></app-signup>
+        </md-tab>
+    </md-tab-group>
     <router-outlet></router-outlet>
 </div>

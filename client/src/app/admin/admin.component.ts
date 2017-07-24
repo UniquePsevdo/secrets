@@ -7,12 +7,12 @@ import {Router, ActivatedRoute} from "@angular/router";
     templateUrl: './admin.component.html',
     styleUrls: ['./admin.component.scss']
 })
-export class AdminComponent implements OnInit {
 
-    constructor(private authService: AuthService, private router: Router, private route : ActivatedRoute ) {
+//todo: после скрытия/открытия, проверить функционал логина и регистрации!!! - in progress...
+export class AdminComponent implements OnInit {
+    constructor(private authService: AuthService, private router: Router, private route : ActivatedRoute) {
     }
 
     ngOnInit() {
-
     }
 }
