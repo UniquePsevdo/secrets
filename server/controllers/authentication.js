@@ -4,7 +4,6 @@ const config = require('../config');
 
 function tokenForUser(user) {
 	const timestamp = new Date().getTime();
-	console.log(1);
 	return jwt.encode({
 		sub: user.id,
 		iat: timestamp,
