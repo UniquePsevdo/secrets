@@ -1,8 +1,9 @@
-const passport = require('passport');
 const express = require('express');
+const passportConfig = require('../services/passport');
+const passport = require('passport');
 const router = express.Router();
-const requireAuth = passport.authenticate('jwt', {session: false});
-router.get('/admin', requireAuth, function (req, res) {
+
+router.get('/admin', function (req, res) {
 	res.send({hi: 'there'});
 });
 

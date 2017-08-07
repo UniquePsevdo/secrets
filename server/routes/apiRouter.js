@@ -4,8 +4,11 @@ const passport = require('passport');
 const express = require('express');
 const apiRouter = express.Router();
 const requireSignin = passport.authenticate('local', {session:false});
+const requireAuth = passport.authenticate('bearer', {session: false});
 
-apiRouter.post('/signin', requireSignin, Authentication.signin);
-apiRouter.post('/signup', Authentication.signup);
+apiRouter.post('/login', requireSignin, Authentication.signin);
+apiRouter.post('/register', Authentication.signup);
+apiRouter.post('/refresh', requireAuth, Authentication.signin);
+apiRouter.get('/test', requireAuth, Authentication.testGet);
 
 module.exports = apiRouter;

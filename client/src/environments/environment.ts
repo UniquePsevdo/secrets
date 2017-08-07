@@ -5,5 +5,7 @@
 
 export const environment = {
     production: false,
-    apiUrl: this.production ? '???':'http://localhost:3090/api/'
+    apiUrl: 'http://localhost:3090/api',
+    token_endpoint: '/login',
+    refresh_endpoint: '/refresh'
 };

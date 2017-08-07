@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from "../../auth/auth.service";
+import {AuthService} from "../../../auth.service";
 import {Router, ActivatedRoute} from "@angular/router";
 import {FormGroup, FormControl, Validators} from "@angular/forms";
-import {environment} from '../../../../environments/environment';
 
 @Component({
     selector: 'app-signin',
@@ -12,8 +11,6 @@ import {environment} from '../../../../environments/environment';
 export class SigninComponent implements OnInit {
 
     constructor(private authService: AuthService, private router: Router, private route: ActivatedRoute) {
-        /*console.log('environment : ', environment);*/
-        //console.log(autorefresh);
     }
 
     signInForm: FormGroup;
@@ -26,10 +23,11 @@ export class SigninComponent implements OnInit {
     };
 
     onSubmit() {
-        this.authService.signIn(this.signInForm.value)
+        this.authService.login(this.signInForm.value, 'admin')
             .subscribe((data) => {
                     if (data) {
-                        console.log(0, data.token);
+                        this.authService.addTokens(data.token, data.refresh_token);
+                        //console.log(this.authService.getRefreshTokenExpirationDate());
                     }
                 },
                 (err) => {
@@ -38,4 +36,8 @@ export class SigninComponent implements OnInit {
             )
 
     };
+
+
+
+
 }

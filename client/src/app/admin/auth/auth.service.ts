@@ -1,9 +1,7 @@
-import {Injectable} from "@angular/core";
-import {Http, Headers, Response} from "@angular/http";
-import {environment} from '../../../environments/environment';
-import 'rxjs/Rx';
-import {Observable} from "rxjs";
-import request from 'request-promise';
+import { Injectable } from '@angular/core';
+import { Http, Headers, Response} from '@angular/http';
+import { environment } from '../../../environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class AuthService {
@@ -23,7 +21,7 @@ export class AuthService {
     signIn(data) {
         let body = JSON.stringify(data);
         let headers = new Headers({'Content-Type': 'application/json'});
-        return this.http.post(`${environment.apiUrl}signin`, body, {headers})
+        return this.http.post(`${environment.apiUrl}/signin`, body, {headers})
             .map((response: Response) => {
                 return response.json();
             })
@@ -33,7 +31,7 @@ export class AuthService {
     signUp(data) {
         let body = JSON.stringify(data);
         let headers = new Headers({'Content-Type': 'application/json'});
-        return this.http.post(`${environment.apiUrl}signup`, body, {headers})
+        return this.http.post(`${environment.apiUrl}/signup`, body, {headers})
             .map((response: Response) => response.json())
             .catch((error: Response) => Observable.throw(error.json()));
     }

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from "../../auth/auth.service";
+import {AuthService} from "../../../auth.service";
 import {Router, ActivatedRoute} from "@angular/router";
 import {FormGroup, FormControl, Validators} from "@angular/forms";
 import {environment} from '../../../../environments/environment';
@@ -25,7 +25,7 @@ export class SignupComponent implements OnInit {
     };
 
     onSubmit() {
-        this.authService.signUp(this.signUpForm.value)
+        this.authService.register(this.signUpForm.value, 'admin')
             .subscribe((response)=> {
                     console.log('response: ',response);
                 },
@@ -33,7 +33,6 @@ export class SignupComponent implements OnInit {
                     console.log(err);
                 }
             )
-
     };
 
 }
