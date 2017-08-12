@@ -27,7 +27,6 @@ export class SigninComponent implements OnInit {
             .subscribe((data) => {
                     if (data) {
                         this.authService.addTokens(data.token, data.refresh_token);
-                        //console.log(this.authService.getRefreshTokenExpirationDate());
                     }
                 },
                 (err) => {
@@ -36,8 +35,4 @@ export class SigninComponent implements OnInit {
             )
 
     };
-
-
-
-
 }

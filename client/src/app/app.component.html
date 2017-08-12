@@ -1,24 +1,25 @@
 <div>
-	<div fxLayout="row" fxLayoutAlign="center center">
-		<div fxFlex="18%" fxFlex.sm="7%" fxFlex.md="12%" fxHide.xs></div>
-		<div fxFlex="64%" fxFlex.xs="100%" fxFlex.sm="86%" fxFlex.md="76%">
-			<nav md-tab-nav-bar>
-				<a md-tab-link
-				   [routerLink]="['']"
-				   [routerLinkActiveOptions]="{exact:true}"
-				   routerLinkActive #rla="routerLinkActive"
-				   [active]="rla.isActive">
-					Home
-				</a>
-				<a md-tab-link
-				   [routerLink]="['admin']"
-				   routerLinkActive #rlb="routerLinkActive"
-				   [active]="rlb.isActive">
-					Admin
-				</a>
-			</nav>
-			<router-outlet></router-outlet>
-		</div>
-		<div fxFlex="18%" fxFlex.sm="7%" fxFlex.md="12%" fxHide.xs></div>
-	</div>
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <div fxFlex="18%" fxFlex.sm="7%" fxFlex.md="12%" fxHide.xs></div>
+        <div fxFlex="64%" fxFlex.xs="100%" fxFlex.sm="86%" fxFlex.md="76%">
+            <nav md-tab-nav-bar>
+                <a md-tab-link
+                   [routerLink]="['']"
+                   [routerLinkActiveOptions]="{exact:true}"
+                   routerLinkActive #rla="routerLinkActive"
+                   [active]="rla.isActive">
+                    Home
+                </a>
+                <a md-tab-link
+                   [routerLink]="['admin']"
+                   routerLinkActive #rlb="routerLinkActive"
+                   [active]="rlb.isActive">
+                    Admin
+                </a>
+            </nav>
+            <router-outlet></router-outlet>
+            <app-errors></app-errors>
+        </div>
+        <div fxFlex="18%" fxFlex.sm="7%" fxFlex.md="12%" fxHide.xs></div>
+    </div>
 </div>
