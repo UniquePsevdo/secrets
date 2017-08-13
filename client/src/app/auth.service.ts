@@ -1,10 +1,17 @@
+/*Old*/
+
+
+
+
+
 import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
-import {Http, Headers, Response} from '@angular/http';
+import {Headers, Response} from '@angular/http';
+import { HttpClient} from '@angular/common/http';
 import {environment} from '../environments/environment';
 import {tokenNotExpired, JwtHelper} from 'angular2-jwt';
 import {Subject, Observable} from 'rxjs';
-import { JwtHttp } from 'angular2-jwt-refresh';
+import {JwtModule} from '@auth0/angular-jwt';
 
 @Injectable()
 export class AuthService {
@@ -12,7 +19,7 @@ export class AuthService {
     tokenIsBeingRefreshed: Subject<boolean>;
     lastUrl: string;
 
-    constructor(private http: Http, private router: Router, private jwtHttp : JwtHttp) {
+    constructor(private http: HttpClient, private router: Router) {
         this.requireLoginSubject = new Subject<boolean>();
         this.tokenIsBeingRefreshed = new Subject<boolean>();
         this.tokenIsBeingRefreshed.next(false);
@@ -28,23 +35,13 @@ export class AuthService {
         }
     }
 
-    login(data, userType: string) {
-        let body = JSON.stringify(data);
-        let headers = new Headers({'Content-Type': 'application/json'});
-        return this.http.post(`${environment.apiUrl}${environment.token_endpoint}`, body, {headers})
-            .map((response: Response) => {
-                return response.json();
-            })
+    login(body, userType: string) {
+        return this.http.post(`${environment.apiUrl}${environment.token_endpoint}`, body)
             .catch((error: Response) => Observable.throw(error.json()));
     }
 
-    register(data, userType: string) {
-        let body = JSON.stringify(data);
-        let headers = new Headers({'Content-Type': 'application/json'});
-        return this.http.post(`${environment.apiUrl}/register`, body, {headers})
-            .map((response: Response) => {
-                return response.json();
-            })
+    register(body, userType: string) {
+        return this.http.post(`${environment.apiUrl}/register`, body)
             .catch((error: Response) => Observable.throw(error.json()));
     }
 

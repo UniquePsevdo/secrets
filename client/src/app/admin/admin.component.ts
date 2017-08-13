@@ -1,11 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from "../auth.service";
 import {Router, ActivatedRoute} from "@angular/router";
 import {Response, Headers} from '@angular/http';
 import {Observable} from "rxjs";
 import {environment} from '../../environments/environment';
-import {JwtHttp} from 'angular2-jwt-refresh';
 import {AdminHttpRequests} from "./admin-http-requests";
+import {AuthenticationService} from "../authentication/authentication.service";
 
 @Component({
     selector: 'app-admin',
@@ -14,9 +13,13 @@ import {AdminHttpRequests} from "./admin-http-requests";
 })
 
 export class AdminComponent implements OnInit {
-    constructor(private authService: AuthService, private router: Router, private route: ActivatedRoute, private jwtHttp: JwtHttp, private adminHttpRequests : AdminHttpRequests) {}
+    constructor(private authenticationService: AuthenticationService, private router: Router, private route: ActivatedRoute, private adminHttpRequests : AdminHttpRequests) {}
 
     ngOnInit() {}
+
+    logout(){
+        this.authenticationService.logout();
+    }
 
     getData() {
         this.adminHttpRequests.runRequest('getAdminData');

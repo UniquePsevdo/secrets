@@ -1,8 +1,9 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {HttpModule, Http, RequestOptions, Response} from '@angular/http';
-import {AuthConfig} from 'angular2-jwt';
+import {HttpModule} from '@angular/http';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {HttpClientModule} from '@angular/common/http';
 import {
     MdTabsModule, MdButtonModule, MdInputModule, MdRadioModule, MdDialogModule, MdSnackBarModule
 } from '@angular/material';
@@ -18,15 +19,18 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {AppRoutingModule} from './app-routing.module';
 import {AuthService} from "./auth.service";
 import {AuthGuard} from "./auth-guard.service";
+
 import {AdminContentComponent} from './admin/admin-content/admin-content.component';
 import {RegisterComponent} from './admin/auth/register/register.component';
 import {LoginComponent} from './admin/auth/login/login.component';
-import {JwtHttp, JwtConfigService} from "angular2-jwt-refresh";
 
 import {environment} from '../environments/environment';
 
 import {AdminHttpRequests} from "./admin/admin-http-requests";
 import {ErrorService} from "./errors/error.service";
+import {AuthenticationService} from "./authentication/authentication.service";
+import {AuthenticationModule} from "./authentication/authentication.module";
+import {RefreshAuthInterceptor} from "./authentication/refresh-authInterceptor";
 
 @NgModule({
     declarations: [
@@ -40,51 +44,18 @@ import {ErrorService} from "./errors/error.service";
         ErrorsComponent
     ],
     imports: [
-        BrowserModule, HttpModule,
+        BrowserModule, HttpModule, HttpClientModule, AuthenticationModule,
         BrowserAnimationsModule,
         FlexLayoutModule,
         ReactiveFormsModule,
         MdTabsModule, MdButtonModule, MdInputModule, MdRadioModule, MdDialogModule, MdSnackBarModule,
         AppRoutingModule
     ],
-    providers: [AuthService, AuthGuard, AdminHttpRequests, ErrorService,{
-        provide: JwtHttp,
-        useFactory: getJwtHttp,
-        deps: [Http, RequestOptions]
+    providers: [AuthService, AuthenticationService, AuthGuard, AdminHttpRequests, ErrorService, {
+        provide: HTTP_INTERCEPTORS,
+        useClass: RefreshAuthInterceptor,
+        multi: true,
     }],
     bootstrap: [AppComponent]
 })
 export class AppModule {}
-
-export function getJwtHttp(http: Http, options: RequestOptions) {
-    let jwtOptions = {
-        endPoint: `${environment.apiUrl}${environment.refresh_endpoint}`,
-        // optional
-        payload: {type: 'refresh'},
-        beforeSeconds: 15,          // refresh token before 10 min
-        tokenName: 'refresh_token',
-        refreshTokenGetter: (() => localStorage.getItem('refresh_token')),
-        tokenSetter: ((res: Response): boolean | Promise<void> => {
-            res = res.json();
-            if (!res['token'] || !res['refresh_token']) {
-                localStorage.removeItem('token');
-                localStorage.removeItem('refresh_token');
-                return false;
-            }
-            localStorage.setItem('token', res['token']);
-            localStorage.setItem('refresh_token', res['refresh_token']);
-            return true;
-        })
-    };
-    let authConfig = new AuthConfig({
-        noJwtError: true,
-        globalHeaders: [{'Accept': 'application/json'}],
-        tokenGetter: (() => localStorage.getItem('token')),
-    });
-
-    return new JwtHttp(
-        new JwtConfigService(jwtOptions, authConfig),
-        http,
-        options
-    );
-}

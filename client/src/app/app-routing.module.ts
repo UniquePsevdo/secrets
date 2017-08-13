@@ -5,12 +5,13 @@ import {AdminComponent} from './admin/admin.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {AuthGuard} from "./auth-guard.service";
 import {AdminContentComponent} from "./admin/admin-content/admin-content.component";
+import { PublicGuard, ProtectedGuard } from 'ngx-auth';
 
 const appRoutes: Routes = [
     {path: '', component: HomeComponent},
     {path: 'admin',
-        /*canActivate:[AuthGuard],*/
-        canActivateChild: [AuthGuard],
+        /*canActivate:[PublicGuard],*/
+        canActivateChild: [ProtectedGuard],
         component: AdminComponent,
         children:[
             {path:'content', component: AdminContentComponent}

@@ -1,21 +1,19 @@
 <div class="padding">
     <md-tab-group>
-        <md-tab *ngIf="authService.isUserAuthenticated()===false" label="Log In">
+        <md-tab *ngIf="authenticationService.isUserAuthenticated()===false" label="Log In">
             <app-login></app-login>
         </md-tab>
-        <md-tab *ngIf="authService.isUserAuthenticated()===true" label="Content">
+        <md-tab *ngIf="authenticationService.isUserAuthenticated()===true" label="Content">
             <app-admin-content></app-admin-content>
         </md-tab>
-        <md-tab *ngIf="authService.isUserAuthenticated()===true" label="Log out">
-
-            <button md-raised-button color="primary" type="button" (click)="logout()">Logout</button>
+        <md-tab *ngIf="authenticationService.isUserAuthenticated()===true" label="Log out">
+            <div fxLayout="row" fxLayoutAlign="start center" style="margin-top: 20px;">
+                <button md-raised-button color="primary" type="button" (click)="logout()">Logout</button>
+            </div>
         </md-tab>
-        <md-tab *ngIf="authService.isUserAuthenticated()===false" label="Register">
+        <md-tab *ngIf="authenticationService.isUserAuthenticated()===false" label="Register">
             <app-register></app-register>
         </md-tab>
     </md-tab-group>
-    <div fxLayout="row" fxLayoutAlign="center center">
-        <button md-raised-button color="primary" type="button" (click)="getData()">Test</button>
-    </div>
     <router-outlet></router-outlet>
 </div>

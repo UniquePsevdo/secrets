@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../../auth.service";
 import {Router, ActivatedRoute} from "@angular/router";
 import {FormGroup, FormControl, Validators} from "@angular/forms";
+import { AuthenticationService } from '../../../authentication';
 
 @Component({
     selector: 'app-login',
@@ -10,7 +11,7 @@ import {FormGroup, FormControl, Validators} from "@angular/forms";
 })
 export class LoginComponent implements OnInit {
 
-    constructor(private authService: AuthService, private router: Router, private route: ActivatedRoute) {
+    constructor(private authService: AuthService, private authenticationService: AuthenticationService, private router: Router, private route: ActivatedRoute) {
     }
 
     signInForm: FormGroup;
@@ -23,10 +24,12 @@ export class LoginComponent implements OnInit {
     };
 
     onSubmit() {
-        this.authService.login(this.signInForm.value, 'admin')
+        /*this.authService.login(this.signInForm.value, 'admin')*/
+        this.authenticationService.login(this.signInForm.value)
             .subscribe((data) => {
                     if (data) {
-                        this.authService.addTokens(data.token, data.refresh_token);
+                        //this.authService.addTokens(data.token, data.refresh_token);
+                        console.log(data);
                     }
                 },
                 (err) => {
