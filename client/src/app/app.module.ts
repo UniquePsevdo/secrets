@@ -19,8 +19,8 @@ import {AppRoutingModule} from './app-routing.module';
 import {AuthService} from "./auth.service";
 import {AuthGuard} from "./auth-guard.service";
 import {AdminContentComponent} from './admin/admin-content/admin-content.component';
-import {SignupComponent} from './admin/auth/signup/signup.component';
-import {SigninComponent} from './admin/auth/signin/signin.component';
+import {RegisterComponent} from './admin/auth/register/register.component';
+import {LoginComponent} from './admin/auth/login/login.component';
 import {JwtHttp, JwtConfigService} from "angular2-jwt-refresh";
 
 import {environment} from '../environments/environment';
@@ -35,8 +35,8 @@ import {ErrorService} from "./errors/error.service";
         HomeComponent,
         PageNotFoundComponent,
         AdminContentComponent,
-        SignupComponent,
-        SigninComponent,
+        RegisterComponent,
+        LoginComponent,
         ErrorsComponent
     ],
     imports: [

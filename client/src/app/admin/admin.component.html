@@ -1,17 +1,17 @@
 <div class="padding">
     <md-tab-group>
-        <md-tab *ngIf="authService.isUserAuthenticated()===false" label="Sign In">
-            <app-signin></app-signin>
+        <md-tab *ngIf="authService.isUserAuthenticated()===false" label="Log In">
+            <app-login></app-login>
         </md-tab>
         <md-tab *ngIf="authService.isUserAuthenticated()===true" label="Content">
             <app-admin-content></app-admin-content>
         </md-tab>
-        <md-tab *ngIf="authService.isUserAuthenticated()===true" label="Sign Out">
+        <md-tab *ngIf="authService.isUserAuthenticated()===true" label="Log out">
 
-            <div>Sign Out button</div>
+            <button md-raised-button color="primary" type="button" (click)="logout()">Logout</button>
         </md-tab>
-        <md-tab *ngIf="authService.isUserAuthenticated()===false" label="Sign Up">
-            <app-signup></app-signup>
+        <md-tab *ngIf="authService.isUserAuthenticated()===false" label="Register">
+            <app-register></app-register>
         </md-tab>
     </md-tab-group>
     <div fxLayout="row" fxLayoutAlign="center center">
