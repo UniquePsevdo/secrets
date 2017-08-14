@@ -2,7 +2,7 @@ const jwt = require('jwt-simple');
 const User = require('../models/user');
 const config = require('../config');
 
-function tokenForUser(user) {
+function tokenForUser(user){
 	const timestamp = new Date().getTime();
 	return jwt.encode({
 		sub: user.id,
@@ -20,7 +20,7 @@ function refreshTokenForUser(user) {
 	}, config.secret);
 }
 
-exports.signup = function (req, res, next) {
+exports.register = function (req, res, next) {
 	const email = req.body.email;
 	const password = req.body.password;
 	
@@ -55,12 +55,16 @@ exports.signup = function (req, res, next) {
 	//respond user was created
 }
 
-exports.signin = function (req, res, next) {
+exports.login = function (req, res, next) {
 	console.log('req.user', req.user);
 	//give a token to user
-	res.send({token: tokenForUser(req.user), refresh_token: refreshTokenForUser(req.user)});
+	setTimeout(()=>{
+		res.send({token: tokenForUser(req.user), refresh_token: refreshTokenForUser(req.user)});
+	}, 1500)
 }
 
 exports.testGet = function (req, res, next) {
-	res.send({data:'test data'});
+	setTimeout(()=>{
+		res.send({data:'test data'});
+	},1500)
 }

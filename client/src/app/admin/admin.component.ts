@@ -20,17 +20,4 @@ export class AdminComponent implements OnInit {
     logout(){
         this.authenticationService.logout();
     }
-
-    getData() {
-        this.adminHttpRequests.runRequest('getAdminData');
-        /* const url = `${environment.apiUrl}` + '/test';
-        return this.jwtHttp.get(url)
-            .map((res: Response) => {
-                return res.json();
-            }).subscribe((data) => {
-                console.log(data);
-            }, (err) => {
-                console.log(err);
-            })*/
-    }
 }

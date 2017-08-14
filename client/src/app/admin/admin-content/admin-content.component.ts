@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from "../../authentication/authentication.service";
+import {AdminHttpRequests} from "../admin-http-requests";
 
 @Component({
     selector: 'app-admin-content',
@@ -7,9 +8,10 @@ import {AuthenticationService} from "../../authentication/authentication.service
     styleUrls: ['./admin-content.component.scss']
 })
 export class AdminContentComponent implements OnInit {
+    constructor(private adminHttpRequests : AdminHttpRequests) {}
 
-    constructor(private authenticationService: AuthenticationService) {
-
+    getData() {
+        this.adminHttpRequests.runRequest('getAdminData');
     }
 
     ngOnInit() {

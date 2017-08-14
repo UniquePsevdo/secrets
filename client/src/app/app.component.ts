@@ -1,4 +1,6 @@
 import {Component} from '@angular/core';
+import {SpinnerComponent} from "ng-http-loader/spinner/spinner.component";
+
 
 @Component({
     selector: 'app-root',
@@ -7,5 +9,8 @@ import {Component} from '@angular/core';
 })
 
 export class AppComponent {
+    constructor(public spinnerComponent : SpinnerComponent){
+        console.log(this.spinnerComponent);
+    }
     title = 'Does this change?';
 }

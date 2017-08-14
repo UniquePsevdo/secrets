@@ -4,6 +4,7 @@ import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
+import { NgHttpLoaderModule} from 'ng-http-loader/ng-http-loader.module';
 import {
     MdTabsModule, MdButtonModule, MdInputModule, MdRadioModule, MdDialogModule, MdSnackBarModule
 } from '@angular/material';
@@ -31,6 +32,7 @@ import {ErrorService} from "./errors/error.service";
 import {AuthenticationService} from "./authentication/authentication.service";
 import {AuthenticationModule} from "./authentication/authentication.module";
 import {RefreshAuthInterceptor} from "./authentication/refresh-authInterceptor";
+import {SpinnerComponent} from "ng-http-loader/spinner/spinner.component";
 
 @NgModule({
     declarations: [
@@ -44,14 +46,14 @@ import {RefreshAuthInterceptor} from "./authentication/refresh-authInterceptor";
         ErrorsComponent
     ],
     imports: [
-        BrowserModule, HttpModule, HttpClientModule, AuthenticationModule,
+        BrowserModule, HttpModule, HttpClientModule, AuthenticationModule, NgHttpLoaderModule,
         BrowserAnimationsModule,
         FlexLayoutModule,
         ReactiveFormsModule,
         MdTabsModule, MdButtonModule, MdInputModule, MdRadioModule, MdDialogModule, MdSnackBarModule,
         AppRoutingModule
     ],
-    providers: [AuthService, AuthenticationService, AuthGuard, AdminHttpRequests, ErrorService, {
+    providers: [AuthService, AuthenticationService, AuthGuard, AdminHttpRequests, ErrorService, SpinnerComponent,{
         provide: HTTP_INTERCEPTORS,
         useClass: RefreshAuthInterceptor,
         multi: true,
