@@ -10,7 +10,6 @@ import {SpinnerComponent} from "ng-http-loader/spinner/spinner.component";
 
 export class AppComponent {
     constructor(public spinnerComponent : SpinnerComponent){
-        console.log(this.spinnerComponent);
     }
     title = 'Does this change?';
 }

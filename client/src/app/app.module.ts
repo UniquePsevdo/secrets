@@ -3,7 +3,9 @@ import {HttpModule} from '@angular/http';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HttpClient} from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { NgHttpLoaderModule} from 'ng-http-loader/ng-http-loader.module';
 import {
     MdTabsModule, MdButtonModule, MdInputModule, MdRadioModule, MdDialogModule, MdSnackBarModule
@@ -47,6 +49,13 @@ import {SpinnerComponent} from "ng-http-loader/spinner/spinner.component";
     ],
     imports: [
         BrowserModule, HttpModule, HttpClientModule, AuthenticationModule, NgHttpLoaderModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient]
+            }
+        }),
         BrowserAnimationsModule,
         FlexLayoutModule,
         ReactiveFormsModule,
@@ -61,3 +70,7 @@ import {SpinnerComponent} from "ng-http-loader/spinner/spinner.component";
     bootstrap: [AppComponent]
 })
 export class AppModule {}
+
+export function HttpLoaderFactory(http: HttpClient) {
+    return new TranslateHttpLoader(http);
+}

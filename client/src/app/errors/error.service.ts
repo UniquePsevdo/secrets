@@ -1,10 +1,10 @@
 import {EventEmitter} from "@angular/core";
-import {Error} from './error.model';
+import {ErrorComponent} from './error.model';
 export class ErrorService{
-    errorOccured = new EventEmitter<Error>();
+    errorOccured = new EventEmitter<ErrorComponent>();
 
     handleError(error : any){
-        const errorData = new Error(error.title, error.message);
+        const errorData = new ErrorComponent(error.title, error.message);
         this.errorOccured.emit(errorData);
     }
 }

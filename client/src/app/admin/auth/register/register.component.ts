@@ -4,6 +4,7 @@ import {Router, ActivatedRoute} from "@angular/router";
 import {FormGroup, FormControl, Validators} from "@angular/forms";
 import {environment} from '../../../../environments/environment';
 import {AuthenticationService} from "../../../authentication/authentication.service";
+import {ErrorService} from "../../../errors/error.service";
 
 @Component({
     selector: 'app-register',
@@ -12,7 +13,7 @@ import {AuthenticationService} from "../../../authentication/authentication.serv
 })
 export class RegisterComponent implements OnInit {
 
-    constructor(private authService: AuthService, private authenticationService: AuthenticationService, private router: Router, private route: ActivatedRoute) {
+    constructor(private authService: AuthService, private authenticationService: AuthenticationService, private router: Router, private route: ActivatedRoute, private errorService:ErrorService) {
         //console.log('environment: ', environment);
     }
 
@@ -26,12 +27,12 @@ export class RegisterComponent implements OnInit {
     };
 
     onSubmit() {
-        this.authenticationService.register(this.signUpForm.value, 'admin')
+        this.authenticationService.register(this.signUpForm.value)
             .subscribe((response)=> {
-                    console.log('response: ',response);
+                    console.log('response: ', response);
                 },
-                (err)=> {
-                    console.log(err);
+                (data)=> {
+                    this.errorService.handleError({title: data.error.error, message: data.error.error});
                 }
             )
     };

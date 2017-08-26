@@ -98,9 +98,11 @@ export class AuthenticationService implements AuthService {
             .do((tokens: AccessData) => this.saveAccessData(tokens));
     }
 
-    register(body, userType: string) {
+    register(body) {
         return this.http.post(`${environment.apiUrl}/register`, body)
-            .catch((error: Response) => Observable.throw(error.json()));
+            .catch((error: Response) => {
+                return Observable.throw(error);
+            });
     }
 
     /**
