@@ -3,17 +3,24 @@ const http = require('http');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const app = express();
-const router = require('./routes/index');
-const apiRouter = require('./routes/apiRouter');
+const apiRouter = require('./apiRoutes/apiRouter');
 const mongoose = require ('mongoose');
 const cors = require ('cors');
+const i18n = require("i18n");
 const {notFound, developmentErrors, productionErrors} = require('./handlers/errorHandlers');
+
+i18n.configure({
+	locales:['en', 'ua'],
+	directory: __dirname + '/locales'
+});
 
 //db setup
 mongoose.connect('mongodb://VolodymyrSydorov:My_1ntent10ns@ds143191.mlab.com:43191/the_secrets');
 
 //app setup
 app.use(morgan('combined'));
+
+app.use(i18n.init);
 
 /*app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');*/
@@ -31,11 +38,7 @@ var corsOptions = {
 app.use(cors(corsOptions));
 app.use(bodyParser.json({type: '*/*'}));
 
-/*app.use('/api/', apiRouter);
-router(app);*/
-
 app.use('/api/', apiRouter);
-app.use('/', router);
 
 app.use(notFound);
 console.log(process.env.NODE_ENV);

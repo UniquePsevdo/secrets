@@ -62,9 +62,3 @@ exports.login = function (req, res, next) {
 		res.send({token: tokenForUser(req.user), refresh_token: refreshTokenForUser(req.user)});
 	}, 1500)
 }
-
-exports.testGet = function (req, res, next) {
-	setTimeout(()=>{
-		res.send({data:'test data'});
-	},1500)
-}

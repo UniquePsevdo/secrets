@@ -5,6 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "local": "ng serve --environment=local",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -33,6 +34,8 @@
     "angular2-jwt": "^0.2.3",
     "core-js": "^2.4.1",
     "jwt-autorefresh": "^0.2.4",
+    "localize-router": "^1.0.0-rc.0",
+    "localize-router-http-loader": "^1.0.1",
     "ng-http-loader": "^0.2.0",
     "ngx-auth": "^2.0.2",
     "rxjs": "^5.1.0",

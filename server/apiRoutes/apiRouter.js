@@ -9,6 +9,5 @@ const requireAuth = passport.authenticate('bearer', {session: false});
 apiRouter.post('/login', requireSignin, Authentication.login);
 apiRouter.post('/register', Authentication.register);
 apiRouter.post('/refresh', requireAuth, Authentication.login);
-apiRouter.get('/test', requireAuth, Authentication.testGet);
 
 module.exports = apiRouter;

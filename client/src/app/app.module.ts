@@ -4,7 +4,8 @@ import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule, HttpClient} from '@angular/common/http';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import {Location} from '@angular/common';
+import {TranslateModule, TranslateLoader, TranslateService} from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { NgHttpLoaderModule} from 'ng-http-loader/ng-http-loader.module';
 import {
@@ -35,6 +36,11 @@ import {AuthenticationService} from "./authentication/authentication.service";
 import {AuthenticationModule} from "./authentication/authentication.module";
 import {RefreshAuthInterceptor} from "./authentication/refresh-authInterceptor";
 import {SpinnerComponent} from "ng-http-loader/spinner/spinner.component";
+import {RouterModule} from '@angular/router';
+import {LocalizeParser, LocalizeRouterModule, LocalizeRouterSettings} from 'localize-router';
+import {LocalizeRouterHttpLoader} from 'localize-router-http-loader';
+import {routes} from './routes/routes';
+import {CustomTranslateLoader} from "./translate-loader";
 
 @NgModule({
     declarations: [
@@ -52,10 +58,17 @@ import {SpinnerComponent} from "ng-http-loader/spinner/spinner.component";
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
-                useFactory: HttpLoaderFactory,
-                deps: [HttpClient]
+                useClass: CustomTranslateLoader
             }
         }),
+        LocalizeRouterModule.forRoot(routes, {
+            parser: {
+                provide: LocalizeParser,
+                useFactory: LocalizeHttpLoaderFactory,
+                deps: [TranslateService, Location, LocalizeRouterSettings, HttpClient]
+            }
+        }),
+        RouterModule.forRoot(routes),
         BrowserAnimationsModule,
         FlexLayoutModule,
         ReactiveFormsModule,
@@ -71,6 +84,8 @@ import {SpinnerComponent} from "ng-http-loader/spinner/spinner.component";
 })
 export class AppModule {}
 
-export function HttpLoaderFactory(http: HttpClient) {
-    return new TranslateHttpLoader(http);
+
+export function LocalizeHttpLoaderFactory(translate: TranslateService, location: Location, settings: LocalizeRouterSettings, http: HttpClient) {
+    return new LocalizeRouterHttpLoader(translate, location, settings, http,
+        environment.envName==='local' ? '../assets/i18n/locales.json' : `${environment.apiUrl}/locales`);
 }
