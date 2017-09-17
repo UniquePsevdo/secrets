@@ -16,7 +16,7 @@ export class CustomTranslateLoader implements TranslateLoader {
         if(environment.envName === 'local'){
             return this.http.get(`../assets/i18n/${lang}.json`);
         }else{
-            return this.http.get(`${environment.apiUrl}/i18n?language=${lang}`,
+            return this.http.get(`${environment.apiUrl}/translations?language=${lang}`,
                 {
                     headers: new HttpHeaders().set('Accept-Language', lang),
                 }

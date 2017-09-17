@@ -58,7 +58,5 @@ exports.register = function (req, res, next) {
 exports.login = function (req, res, next) {
 	console.log('req.user', req.user);
 	//give a token to user
-	setTimeout(()=>{
-		res.send({token: tokenForUser(req.user), refresh_token: refreshTokenForUser(req.user)});
-	}, 1500)
+	res.send({token: tokenForUser(req.user), refresh_token: refreshTokenForUser(req.user)});
 }

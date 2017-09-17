@@ -10,8 +10,9 @@ const i18n = require("i18n");
 const {notFound, developmentErrors, productionErrors} = require('./handlers/errorHandlers');
 
 i18n.configure({
-	locales:['en', 'ua'],
-	directory: __dirname + '/locales'
+	locales:['ua', 'en'],
+	directory: __dirname + '/locales',
+	defaultLocale: 'ua',
 });
 
 //db setup

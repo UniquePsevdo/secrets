@@ -4,15 +4,13 @@ import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule, HttpClient} from '@angular/common/http';
-import {Location} from '@angular/common';
 import {TranslateModule, TranslateLoader, TranslateService} from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { NgHttpLoaderModule} from 'ng-http-loader/ng-http-loader.module';
 import {
     MdTabsModule, MdButtonModule, MdInputModule, MdRadioModule, MdDialogModule, MdSnackBarModule
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {ReactiveFormsModule} from '@angular/forms';
+import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 
 import {AppComponent} from './app.component';
 import {AdminComponent} from './admin/admin.component';
@@ -29,6 +27,7 @@ import {RegisterComponent} from './admin/auth/register/register.component';
 import {LoginComponent} from './admin/auth/login/login.component';
 
 import {environment} from '../environments/environment';
+import {reducers} from "./reducers/index";
 
 import {AdminHttpRequests} from "./admin/admin-http-requests";
 import {ErrorService} from "./errors/error.service";
@@ -37,14 +36,21 @@ import {AuthenticationModule} from "./authentication/authentication.module";
 import {RefreshAuthInterceptor} from "./authentication/refresh-authInterceptor";
 import {SpinnerComponent} from "ng-http-loader/spinner/spinner.component";
 import {RouterModule} from '@angular/router';
-import {LocalizeParser, LocalizeRouterModule, LocalizeRouterSettings} from 'localize-router';
-import {LocalizeRouterHttpLoader} from 'localize-router-http-loader';
 import {routes} from './routes/routes';
 import {CustomTranslateLoader} from "./translate-loader";
+import {StoreModule} from "@ngrx/store";
+import {BaseLocaleComponent} from "./base-locale/base-locale.component";
+import {Globals} from "../globals/globals";
+import {HeaderComponent} from "./header/header.component";
+import {MenuComponent} from "./header/menu/menu.component";
+import {MdSelectModule} from '@angular/material';
 
 @NgModule({
     declarations: [
+        BaseLocaleComponent,
         AppComponent,
+        HeaderComponent,
+        MenuComponent,
         AdminComponent,
         HomeComponent,
         PageNotFoundComponent,
@@ -61,31 +67,21 @@ import {CustomTranslateLoader} from "./translate-loader";
                 useClass: CustomTranslateLoader
             }
         }),
-        LocalizeRouterModule.forRoot(routes, {
-            parser: {
-                provide: LocalizeParser,
-                useFactory: LocalizeHttpLoaderFactory,
-                deps: [TranslateService, Location, LocalizeRouterSettings, HttpClient]
-            }
-        }),
-        RouterModule.forRoot(routes),
+        AppRoutingModule,
+        StoreModule.forRoot(reducers),
         BrowserAnimationsModule,
         FlexLayoutModule,
-        ReactiveFormsModule,
-        MdTabsModule, MdButtonModule, MdInputModule, MdRadioModule, MdDialogModule, MdSnackBarModule,
-        AppRoutingModule
+        ReactiveFormsModule, FormsModule,
+        MdTabsModule, MdButtonModule, MdInputModule, MdRadioModule, MdDialogModule, MdSnackBarModule, MdSelectModule
     ],
+    entryComponents: [BaseLocaleComponent],
     providers: [AuthService, AuthenticationService, AuthGuard, AdminHttpRequests, ErrorService, SpinnerComponent,{
         provide: HTTP_INTERCEPTORS,
         useClass: RefreshAuthInterceptor,
         multi: true,
-    }],
+    },
+        Globals
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {}
-
-
-export function LocalizeHttpLoaderFactory(translate: TranslateService, location: Location, settings: LocalizeRouterSettings, http: HttpClient) {
-    return new LocalizeRouterHttpLoader(translate, location, settings, http,
-        environment.envName==='local' ? '../assets/i18n/locales.json' : `${environment.apiUrl}/locales`);
-}
