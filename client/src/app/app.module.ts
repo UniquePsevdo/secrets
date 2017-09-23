@@ -3,11 +3,11 @@ import {HttpModule} from '@angular/http';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {HttpClientModule, HttpClient} from '@angular/common/http';
-import {TranslateModule, TranslateLoader, TranslateService} from '@ngx-translate/core';
+import {HttpClientModule} from '@angular/common/http';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import { NgHttpLoaderModule} from 'ng-http-loader/ng-http-loader.module';
 import {
-    MdTabsModule, MdButtonModule, MdInputModule, MdRadioModule, MdDialogModule, MdSnackBarModule
+    MdTabsModule, MdButtonModule, MdInputModule, MdRadioModule, MdDialogModule, MdSnackBarModule, MdSidenavModule
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
@@ -35,8 +35,6 @@ import {AuthenticationService} from "./authentication/authentication.service";
 import {AuthenticationModule} from "./authentication/authentication.module";
 import {RefreshAuthInterceptor} from "./authentication/refresh-authInterceptor";
 import {SpinnerComponent} from "ng-http-loader/spinner/spinner.component";
-import {RouterModule} from '@angular/router';
-import {routes} from './routes/routes';
 import {CustomTranslateLoader} from "./translate-loader";
 import {StoreModule} from "@ngrx/store";
 import {BaseLocaleComponent} from "./base-locale/base-locale.component";
@@ -44,6 +42,11 @@ import {Globals} from "../globals/globals";
 import {HeaderComponent} from "./header/header.component";
 import {MenuComponent} from "./header/menu/menu.component";
 import {MdSelectModule} from '@angular/material';
+import {NavigationService} from "app/nav-service/nav-service";
+import { SlideMenuModule } from 'cuppa-ng2-slidemenu/cuppa-ng2-slidemenu';
+import { CabinetComponent } from './brand/cabinet/cabinet.component';
+import { ShowroomComponent } from './brand/showroom/showroom.component';
+import { EventsComponent } from './brand/events/events.component';
 
 @NgModule({
     declarations: [
@@ -57,7 +60,10 @@ import {MdSelectModule} from '@angular/material';
         AdminContentComponent,
         RegisterComponent,
         LoginComponent,
-        ErrorsComponent
+        ErrorsComponent,
+        CabinetComponent,
+        ShowroomComponent,
+        EventsComponent
     ],
     imports: [
         BrowserModule, HttpModule, HttpClientModule, AuthenticationModule, NgHttpLoaderModule,
@@ -72,10 +78,14 @@ import {MdSelectModule} from '@angular/material';
         BrowserAnimationsModule,
         FlexLayoutModule,
         ReactiveFormsModule, FormsModule,
-        MdTabsModule, MdButtonModule, MdInputModule, MdRadioModule, MdDialogModule, MdSnackBarModule, MdSelectModule
+        MdTabsModule, MdButtonModule, MdInputModule, MdRadioModule, MdDialogModule, MdSnackBarModule, MdSelectModule, SlideMenuModule
     ],
     entryComponents: [BaseLocaleComponent],
-    providers: [AuthService, AuthenticationService, AuthGuard, AdminHttpRequests, ErrorService, SpinnerComponent,{
+    providers: [AuthService, AuthenticationService, AuthGuard,
+        AdminHttpRequests,
+        ErrorService,
+        NavigationService,
+        SpinnerComponent,{
         provide: HTTP_INTERCEPTORS,
         useClass: RefreshAuthInterceptor,
         multi: true,

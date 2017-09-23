@@ -1,5 +1,8 @@
-<md-select (change)="setCurrentLanguage(currentLang)" [(ngModel)]="currentLang">
+<app-menu fxFlexAlign="start"></app-menu>
+<div fxFlex></div>
+<md-select fxFlex="none" style="width: 100px;" (change)="setCurrentLanguage(currentLang)" [(ngModel)]="currentLang">
     <md-option *ngFor="let lang of languages" [value]="lang.code">
         {{ lang.code }}
     </md-option>
 </md-select>
+

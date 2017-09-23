@@ -14,20 +14,22 @@ exports.getLocales = function (req, res, next) {
 		locale: "en-US"
 		title: "English"}
 	*/
-	res.send({"data":[
-		{
-		code: "ua",
-		id: 0,
-		is_default : 1,
-		locale: "uk-UA",
-		title: "Українська"
-	}, {
-		code: "en",
-		id: 1,
-		is_default:0,
-		locale: "en-US",
-		title: "English"
-	}]});
+	res.send({
+		"data": [
+			{
+				code: "ua",
+				id: 0,
+				is_default: 1,
+				locale: "uk-UA",
+				title: "Українська"
+			}, {
+				code: "en",
+				id: 1,
+				is_default: 0,
+				locale: "en-US",
+				title: "English"
+			}]
+	});
 	
 }
 

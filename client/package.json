@@ -34,6 +34,7 @@
     "@types/jwt-decode": "^2.2.1",
     "angular2-jwt": "^0.2.3",
     "core-js": "^2.4.1",
+    "cuppa-ng2-slidemenu": "^1.0.2",
     "jwt-autorefresh": "^0.2.4",
     "ng-http-loader": "^0.2.0",
     "ngx-auth": "^2.0.2",

@@ -96,7 +96,7 @@ export class MenuComponent implements OnInit, OnDestroy, AfterViewInit {
                     $('body').addClass('h_auto');
                 }*/
 
-                /*$(window).scrollTop(0);*/
+                /*$(window).scrollTop(0);*/     //todo: need to find solution with scroll top
             }
         })
     }
@@ -111,7 +111,6 @@ export class MenuComponent implements OnInit, OnDestroy, AfterViewInit {
         }
     }
 
-
     goToNavParams(navParams){
         this.navigationService.goToNavParams(navParams);
     }
@@ -120,6 +119,38 @@ export class MenuComponent implements OnInit, OnDestroy, AfterViewInit {
         this.langStateSubscription.unsubscribe();
         this.menuStateSubscription.unsubscribe();
         this.routeSubscriber.unsubscribe();
+    }
+
+    private menuItemsArray: any[] = [
+        {"title":"Home", parent:"", children:[]},
+        {"title":"Admin", parent:"admin", children:[]}
+    ];
+
+    /*private menuItemsArray: any[] = [
+        {"title":"Electricity","link":"#"},
+        {"title":"Mobile Bill","link":"#"},
+        {"title":"Home and Kitchen","link":"#",
+            "subItems":[
+                {"title":"Furniture","link":"#"},
+                {"title":"Cookware","link":"#"},
+            ]
+        },
+        {"title":"Car and Bike Accessories","link":"#",
+            "subItems":[
+                {"title":"Tyres and Alloys","link":"#"},
+                {"title":"Comfort and Safety","link":"#"},
+            ]
+        },
+    ];*/
+
+    public onMenuClose(){
+        console.log("menu closed");
+    }
+    public onMenuOpen(){
+        console.log("menu Opened");
+    }
+    private onItemSelect(item:any){
+        this.navigationService.goToNavParams({parent:item.parent, children:item.children});
     }
 
 }
