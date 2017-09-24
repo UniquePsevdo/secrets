@@ -3,7 +3,6 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { AuthService } from 'ngx-auth';
 import {environment} from '../../environments/environment';
-
 import { TokenStorage } from './token-storage.service';
 
 interface AccessData {
@@ -110,7 +109,7 @@ export class AuthenticationService implements AuthService {
      */
     public logout(): void {
         this.tokenStorage.clear();
-        location.reload(true);
+        /*location.reload(true);*/
     }
 
     /**
