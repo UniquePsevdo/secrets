@@ -146,9 +146,11 @@ export class MenuComponent implements OnInit, OnDestroy, AfterViewInit {
     public onMenuClose(){
         console.log("menu closed");
     }
+
     public onMenuOpen(){
         console.log("menu Opened");
     }
+
     private onItemSelect(item:any){
         this.navigationService.goToNavParams({parent:item.parent, children:item.children});
     }

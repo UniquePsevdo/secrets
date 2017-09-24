@@ -17,3 +17,19 @@
     </div>
     <br/>
 </div>
+<div>
+    <md-card>
+        <md-card-actions>
+            <div fxLayout="row" fxLayoutAlign="end center">
+                <div fxLayout="row" fxFlex="50%" fxLayoutAlign="start center">
+                    Brand Name
+                </div>
+                <div fxLayout="row" fxFlex="50%" fxLayoutAlign="end center">
+                    <button (click)="goToNavParams({parent:'showroom', children:['brandName']})" color="primary" md-raised-button>Cabinet</button>
+                    <button (click)="goToNavParams({parent:'brand', children:['brandName']})" color="primary" md-raised-button>Showroom</button>
+                    <button (click)="goToNavParams({parent:'events', children:['brandName']})" color="primary" md-raised-button>Events</button>
+                </div>
+            </div>
+        </md-card-actions>
+    </md-card>
+</div>
