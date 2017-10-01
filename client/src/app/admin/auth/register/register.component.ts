@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from "../../../auth.service";
 import {Router, ActivatedRoute} from "@angular/router";
 import {FormGroup, FormControl, Validators} from "@angular/forms";
 import {environment} from '../../../../environments/environment';
@@ -13,7 +12,7 @@ import {ErrorService} from "../../../errors/error.service";
 })
 export class RegisterComponent implements OnInit {
 
-    constructor(private authService: AuthService, private authenticationService: AuthenticationService, private router: Router, private route: ActivatedRoute, private errorService:ErrorService) {
+    constructor(private authenticationService: AuthenticationService, private router: Router, private route: ActivatedRoute, private errorService:ErrorService) {
         //console.log('environment: ', environment);
     }
 

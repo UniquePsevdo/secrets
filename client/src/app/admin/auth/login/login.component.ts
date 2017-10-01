@@ -1,6 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from "../../../auth.service";
-import {Router, ActivatedRoute} from "@angular/router";
 import {FormGroup, FormControl, Validators} from "@angular/forms";
 import { AuthenticationService } from '../../../authentication';
 
@@ -28,7 +26,6 @@ export class LoginComponent implements OnInit {
         this.authenticationService.login(this.signInForm.value)
             .subscribe((data) => {
                     if (data) {
-                        //this.authService.addTokens(data.token, data.refresh_token);
                         console.log(data);
                     }
                 },

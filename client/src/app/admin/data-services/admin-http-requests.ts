@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
-import {environment} from '../../environments/environment';
+import {environment} from '../../../environments/environment';
 import {tokenNotExpired} from 'angular2-jwt';
 import {Subject} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 
-import {ErrorService} from '../errors/error.service';
+import {ErrorService} from '../../errors/error.service';
 
 @Injectable()
 export class AdminHttpRequests {

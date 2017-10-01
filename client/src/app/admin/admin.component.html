@@ -3,11 +3,9 @@
         <md-tab *ngIf="authenticationService.isUserAuthenticated()===false" label="Log In">
             <app-login></app-login>
         </md-tab>
-        <md-tab *ngIf="authenticationService.isUserAuthenticated()===true" label="Content">
-            <!--<app-admin-content></app-admin-content>-->
-            <!--<button md-raised-button color="primary" type="button" >Cabinet</button>-->
-            <!--здесь нужен компонент-форма кабинета или даже если нет, то компонент с формой все равно нужен-->
-            <app-cabinet-form></app-cabinet-form>
+        <md-tab *ngIf="authenticationService.isUserAuthenticated()===true" label="Fill content">
+            <app-admin-nav-component [hidden]="showContentChildren===true"></app-admin-nav-component>
+            <router-outlet></router-outlet>
         </md-tab>
         <md-tab *ngIf="authenticationService.isUserAuthenticated()===true" label="Log out">
             <div fxLayout="row" fxLayoutAlign="start center" style="margin-top: 20px;">

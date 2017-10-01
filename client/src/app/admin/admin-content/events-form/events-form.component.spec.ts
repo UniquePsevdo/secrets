@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdminContentComponent } from './admin-content.component';
+import { EventsFormComponent } from './events-form.component';
 
-describe('AdminContentComponent', () => {
-  let component: AdminContentComponent;
-  let fixture: ComponentFixture<AdminContentComponent>;
+describe('EventsFormComponent', () => {
+  let component: EventsFormComponent;
+  let fixture: ComponentFixture<EventsFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdminContentComponent ]
+      declarations: [ EventsFormComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdminContentComponent);
+    fixture = TestBed.createComponent(EventsFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

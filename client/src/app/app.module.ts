@@ -7,7 +7,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import { NgHttpLoaderModule} from 'ng-http-loader/ng-http-loader.module';
 import {
-    MdTabsModule, MdButtonModule, MdInputModule, MdRadioModule, MdDialogModule, MdSnackBarModule, MdCardModule
+    MdTabsModule, MdButtonModule, MdInputModule, MdRadioModule, MdDialogModule, MdSnackBarModule, MdCardModule, MdListModule,
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
@@ -19,17 +19,13 @@ import {HomeComponent} from './home/home.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 
 import {AppRoutingModule} from './app-routing.module';
-import {AuthService} from "./auth.service";
-import {AuthGuard} from "./auth-guard.service";
-
-import {AdminContentComponent} from './admin/admin-content/admin-content.component';
 import {RegisterComponent} from './admin/auth/register/register.component';
 import {LoginComponent} from './admin/auth/login/login.component';
 
 import {environment} from '../environments/environment';
 import {reducers} from "./reducers/index";
 
-import {AdminHttpRequests} from "./admin/admin-http-requests";
+import {AdminHttpRequests} from "./admin/data-services/admin-http-requests";
 import {ErrorService} from "./errors/error.service";
 import {AuthenticationService} from "./authentication/authentication.service";
 import {AuthenticationModule} from "./authentication/authentication.module";
@@ -48,6 +44,9 @@ import { CabinetComponent } from './brand/cabinet/cabinet.component';
 import { ShowroomComponent } from './brand/showroom/showroom.component';
 import { EventsComponent } from './brand/events/events.component';
 import { CabinetFormComponent } from './admin/admin-content/cabinet-form/cabinet-form.component';
+import { AdminNavComponentComponent } from './admin/admin-nav-component/admin-nav-component.component';
+import { ShowroomFormComponent } from './admin/admin-content/showroom-form/showroom-form.component';
+import { EventsFormComponent } from './admin/admin-content/events-form/events-form.component';
 
 @NgModule({
     declarations: [
@@ -58,14 +57,16 @@ import { CabinetFormComponent } from './admin/admin-content/cabinet-form/cabinet
         AdminComponent,
         HomeComponent,
         PageNotFoundComponent,
-        AdminContentComponent,
         RegisterComponent,
         LoginComponent,
         ErrorsComponent,
         CabinetComponent,
         ShowroomComponent,
         EventsComponent,
-        CabinetFormComponent
+        CabinetFormComponent,
+        AdminNavComponentComponent,
+        ShowroomFormComponent,
+        EventsFormComponent
     ],
     imports: [
         BrowserModule, HttpModule, HttpClientModule, AuthenticationModule, NgHttpLoaderModule,
@@ -80,10 +81,10 @@ import { CabinetFormComponent } from './admin/admin-content/cabinet-form/cabinet
         BrowserAnimationsModule,
         FlexLayoutModule,
         ReactiveFormsModule, FormsModule,
-        MdTabsModule, MdButtonModule, MdInputModule, MdRadioModule, MdDialogModule, MdSnackBarModule, MdSelectModule, SlideMenuModule, MdCardModule
+        MdTabsModule, MdButtonModule, MdInputModule, MdRadioModule, MdDialogModule, MdSnackBarModule, MdSelectModule, SlideMenuModule, MdCardModule, MdListModule
     ],
     entryComponents: [BaseLocaleComponent],
-    providers: [AuthService, AuthenticationService, AuthGuard,
+    providers: [AuthenticationService,
         AdminHttpRequests,
         ErrorService,
         NavigationService,

@@ -1,15 +1,15 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from "rxjs/Subscription";
 import {Store} from "@ngrx/store";
-import * as fromRoot from '../../../reducers/index';
 import {AdminInteractionData} from "../../data-services/admin-interaction-data";
+import * as fromRoot from '../../../reducers/index';
 
 @Component({
-    selector: 'app-cabinet-form',
-    templateUrl: './cabinet-form.component.html',
-    styleUrls: ['./cabinet-form.component.scss']
+    selector: 'app-events-form',
+    templateUrl: './events-form.component.html',
+    styleUrls: ['./events-form.component.scss']
 })
-export class CabinetFormComponent implements OnInit, OnDestroy {
+export class EventsFormComponent implements OnInit, OnDestroy{
     routerSubscription: Subscription;
 
     constructor(private store: Store<fromRoot.AppState>, private dataService: AdminInteractionData) {
@@ -23,11 +23,10 @@ export class CabinetFormComponent implements OnInit, OnDestroy {
     ngOnInit() {
     }
 
-    ngOnDestroy(){
-        if(this.routerSubscription){
+    ngOnDestroy() {
+        if (this.routerSubscription) {
             this.routerSubscription.unsubscribe()
         }
     }
-
 
 }

@@ -9,6 +9,7 @@ import {Store} from "@ngrx/store";
 import {HttpClient} from "@angular/common/http";
 import * as langActions from './reducers/language/lang.actions';
 import * as menuActions from './reducers/menu/menu.actions';
+import * as resetActions from './reducers/reset-router/reset.actions';
 import {Router} from "@angular/router";
 import {Globals} from "../globals/globals";
 import {childRoutesDefault} from "./routes/defaultRoutes";
@@ -109,14 +110,19 @@ export class AppComponent implements OnInit, OnDestroy {
                             let children = pathArr.slice(1, pathArr.length);
                             this.store.dispatch(new menuActions.setNavParams({parent, children}));
                         }
+                        this.store.dispatch(new resetActions.routerStart());
                         if (defaultIsCurrent) {
                             this.router.resetConfig(childRoutesDefault);
-                            this.router.navigate([path]);
+                            this.router.navigate([path]).then((data) => {
+                                this.store.dispatch(new resetActions.routerEnd());
+                            });
                         } else {
                             /*let routes = getBaseChildRoutes(state["currentLang"], childRoutesDefault);
                             routes = this.getRouteComponents(routes);*/
                             this.router.resetConfig(getBaseChildRoutes(state["currentLang"], childRoutesDefault));
-                            this.router.navigate([this.globals.currentLang]);
+                            this.router.navigate([this.globals.currentLang]).then((data) => {
+                                this.store.dispatch(new resetActions.routerEnd());
+                            });
                         }
                     }
                 }
@@ -135,11 +141,12 @@ export class AppComponent implements OnInit, OnDestroy {
         }
         return false;
     }
+
     switchLanguage(language: string) {
         this.translate.use(language);
     }
 
-    ngOnDestroy(){
+    ngOnDestroy() {
         this.langStateSubscription.unsubscribe();
         this.menuStateSubscription.unsubscribe();
     }

@@ -28,7 +28,6 @@ export class AuthenticationService implements AuthService {
         return this.tokenStorage
             .getAccessToken()
             .map((token) => {
-            console.log(!!token);
             return !!token
         });
     }
