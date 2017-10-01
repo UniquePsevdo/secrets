@@ -7,7 +7,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import { NgHttpLoaderModule} from 'ng-http-loader/ng-http-loader.module';
 import {
-    MdTabsModule, MdButtonModule, MdInputModule, MdRadioModule, MdDialogModule, MdSnackBarModule, MdCardModule, MdListModule,
+    MdTabsModule, MdButtonModule, MdInputModule, MdRadioModule, MdDialogModule, MdSnackBarModule, MdCardModule,
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
@@ -81,7 +81,7 @@ import { EventsFormComponent } from './admin/admin-content/events-form/events-fo
         BrowserAnimationsModule,
         FlexLayoutModule,
         ReactiveFormsModule, FormsModule,
-        MdTabsModule, MdButtonModule, MdInputModule, MdRadioModule, MdDialogModule, MdSnackBarModule, MdSelectModule, SlideMenuModule, MdCardModule, MdListModule
+        MdTabsModule, MdButtonModule, MdInputModule, MdRadioModule, MdDialogModule, MdSnackBarModule, MdSelectModule, SlideMenuModule, MdCardModule
     ],
     entryComponents: [BaseLocaleComponent],
     providers: [AuthenticationService,
