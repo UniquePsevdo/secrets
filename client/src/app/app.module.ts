@@ -47,6 +47,7 @@ import { SlideMenuModule } from 'cuppa-ng2-slidemenu/cuppa-ng2-slidemenu';
 import { CabinetComponent } from './brand/cabinet/cabinet.component';
 import { ShowroomComponent } from './brand/showroom/showroom.component';
 import { EventsComponent } from './brand/events/events.component';
+import { CabinetFormComponent } from './admin/admin-content/cabinet-form/cabinet-form.component';
 
 @NgModule({
     declarations: [
@@ -63,7 +64,8 @@ import { EventsComponent } from './brand/events/events.component';
         ErrorsComponent,
         CabinetComponent,
         ShowroomComponent,
-        EventsComponent
+        EventsComponent,
+        CabinetFormComponent
     ],
     imports: [
         BrowserModule, HttpModule, HttpClientModule, AuthenticationModule, NgHttpLoaderModule,

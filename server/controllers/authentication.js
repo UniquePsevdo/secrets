@@ -7,16 +7,14 @@ function tokenForUser(user){
 	return jwt.encode({
 		sub: user.id,
 		iat: timestamp,
-		/*exp: Math.round(Date.now() / 1000 ) + 65*60         //65*60=3900 in seconds = 65min*/
-		exp: Math.round(Date.now() / 1000 ) + 15
+		exp: Math.round(Date.now() / 1000 ) + 65*60         //65*60=3900 in seconds = 65min
 	}, config.secret);
 }
 
 function refreshTokenForUser(user) {
 	return jwt.encode({
 		sub: user.id,
-		/*exp: Math.round(Date.now() / 1000 ) + 2*65*60       //65*60=3900 in seconds = 130min*/
-		exp: Math.round(Date.now() / 1000 ) + 10000
+		exp: Math.round(Date.now() / 1000 ) + 2*65*60       //65*60=3900 in seconds = 130min
 	}, config.secret);
 }
 
