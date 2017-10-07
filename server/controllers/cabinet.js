@@ -1,4 +1,4 @@
-exports.getLocales = function (req, res, next) {
+exports.sendRegions = function (req, res, next) {
 	res.send({
 		"data": [
 			{
@@ -15,9 +15,4 @@ exports.getLocales = function (req, res, next) {
 				title: "English"
 			}]
 	});
-	
-}
-
-exports.sendTranslations = function (req, res) {
-	res.send(req.getCatalog(req.getLocale()));
 }

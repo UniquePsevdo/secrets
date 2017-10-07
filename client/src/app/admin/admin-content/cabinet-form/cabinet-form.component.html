@@ -1,3 +1,71 @@
-<p>
-  cabinet-form works!
-</p>
+<!--
+Кабинет:
+Название - строка
+логотип - фотка
+фоточка на заставку в кабинет - фотка
+Краткое описание - текстареа
+Физический адрес - разбить на отдельные поля
+Ссылки в интернете - массив строк
+-->
+<form [formGroup]="cabinetForm" *ngIf="cabinetForm" style="margin-top: 20px">
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <md-input-container fxFlex="50%" style="padding:0 10px 0 0">
+            <input mdInput formControlName="name" type="text" placeholder="{{'CABINET.brand_name_ph' | translate}}">
+            <md-error *ngIf="!cabinetForm.get('name').valid && cabinetForm.get('name').touched">
+                <span *ngIf="cabinetForm.get('name').errors.required">{{'FORMS.error_required' | translate}}</span>
+            </md-error>
+        </md-input-container>
+        <md-input-container fxFlex="50%" style="padding:0 10px 0 0">
+            <input mdInput placeholder="{{'CABINET.region_ph' | translate}}"
+                   aria-label="Region"
+                   [mdAutocomplete]="auto"
+                   [formControl]="region">
+            <md-autocomplete #auto="mdAutocomplete">
+                <md-option *ngFor="let region of filteredRegions | async" [value]="region.name">
+                    <img style="vertical-align:middle;" aria-hidden src="{{region.flag}}" height="25" />
+                    <span>{{region.name}}</span>
+                </md-option>
+            </md-autocomplete>
+            <md-error *ngIf="!cabinetForm.get('region').valid && cabinetForm.get('region').touched">
+                <span *ngIf="cabinetForm.get('region').errors.required">{{'FORMS.error_required' | translate}}</span>
+                <!--add validation-->
+            </md-error>
+        </md-input-container>
+
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <md-input-container fxFlex="50%" style="padding:0 10px 0 0">
+            <input mdInput formControlName="fullAddress" type="text" placeholder="{{'CABINET.full_address_ph' | translate}}">
+            <md-error *ngIf="!cabinetForm.get('fullAddress').valid && cabinetForm.get('fullAddress').touched">
+                <span *ngIf="cabinetForm.get('fullAddress').errors.required">{{'FORMS.error_required' | translate}}</span>
+            </md-error>
+        </md-input-container>
+        <md-input-container fxFlex="50%" style="padding:0 10px 0 0">
+            <input mdInput formControlName="email" type="email" placeholder="E-mail">
+            <md-error *ngIf="!cabinetForm.get('email').valid && cabinetForm.get('email').touched">
+                <span *ngIf="cabinetForm.get('email').errors.required">{{'FORMS.error_required' | translate}}</span>
+                <span *ngIf="cabinetForm.get('email').errors.email && !cabinetForm.get('email').errors.required">{{'FORMS.error_email' | translate}}</span>
+            </md-error>
+        </md-input-container>
+    </div>
+</form>
+
+<!--
+<form [formGroup]="cabinetForm" (ngSubmit)="onSubmit()">
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <md-input-container fxFlex="50%" style="padding:0 10px 0 0">
+            <input mdInput formControlName="email" type="email" placeholder="email">&lt;!&ndash;disabled value="Google"&ndash;&gt;
+            <md-error *ngIf="!cabinetForm.get('email').valid && cabinetForm.get('email').touched">
+                <span *ngIf="cabinetForm.get('email').errors.required">This field is required</span>
+                <span *ngIf="cabinetForm.get('email').errors.email && !cabinetForm.get('email').errors.required">Email is invalid</span>
+            </md-error>
+        </md-input-container>
+        <md-input-container fxFlex="50%" style="padding:0 0 0 10px">
+            <input mdInput formControlName="password" type="password" placeholder="password">
+            <md-error *ngIf="!cabinetForm.get('password').valid && cabinetForm.get('password').touched">
+                <span *ngIf="cabinetForm.get('password').errors.required">This field is required</span>
+            </md-error>
+        </md-input-container>
+    </div>
+    <button md-raised-button color="primary" [disabled]="!cabinetForm.valid" type="submit">Submit</button>
+</form>-->
