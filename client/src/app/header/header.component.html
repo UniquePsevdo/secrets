@@ -1,8 +1,30 @@
-<app-menu fxFlexAlign="start"></app-menu>
-<div fxFlex></div>
-<md-select fxFlex="none" style="width: 100px;" (change)="setCurrentLanguage(currentLang)" [(ngModel)]="currentLang">
-    <md-option *ngFor="let lang of languages" [value]="lang.code">
-        {{lang.code}}
-    </md-option>
-</md-select>
-
+<header class="header">
+	<div class="wrap">
+		<nav class="nav">
+			<div class="nav-item">
+				<a href="javascript:void(0);" class="nav-link">О нас</a>
+			</div>
+			<div class="nav-item">
+				<a href="javascript:void(0);" class="nav-link">Помощь</a>
+			</div>
+			<div class="nav-item">
+				<a href="javascript:void(0);" class="nav-link">Блог</a>
+			</div>
+			<div class="nav-item">
+				<a href="javascript:void(0);" class="nav-link">Контакты</a>
+			</div>
+		</nav>
+		<div class="header-actions">
+			<div class="lang">
+				<md-select (change)="setCurrentLanguage(currentLang)" [(ngModel)]="currentLang">
+				    <md-option *ngFor="let lang of languages" [value]="lang.code">
+				        {{lang.code}}
+				    </md-option>
+				</md-select>
+			</div>
+			<div class="admin-nav">
+				<app-menu></app-menu>
+			</div>
+		</div>
+	</div>
+</header>

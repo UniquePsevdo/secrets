@@ -1,4 +1,11 @@
-<div>
+<app-header></app-header>
+<router-outlet></router-outlet>
+<app-errors></app-errors>
+<spinner [backgroundColor]="'#b5142e'" [spinner]="spinnerComponent.Spinkit.skDoubleBounce"></spinner>
+
+
+<!-- /// Old version /// -->
+<!-- <div>
     <div fxLayout="row">
         <div fxFlex="18%" fxFlex.sm="7%" fxFlex.md="12%" fxHide.xs></div>
         <div fxFlex="64%" fxFlex.xs="100%" fxFlex.sm="86%" fxFlex.md="76%" fxLayoutAlign="end center">
@@ -10,16 +17,16 @@
         <div fxFlex="18%" fxFlex.sm="7%" fxFlex.md="12%" fxHide.xs></div>
         <div fxFlex="64%" fxFlex.xs="100%" fxFlex.sm="86%" fxFlex.md="76%">
             <router-outlet></router-outlet>
-            <app-errors></app-errors>
+            <app-errors></app-errors> -->
             <!--<spinner [backgroundColor]="'#3f51b5'" [spinner]="spinnerComponent.Spinkit.skChasingDots"></spinner>-->
             <!--<spinner [backgroundColor]="'#3f51b5'" [spinner]="spinnerComponent.Spinkit.skCubeGrid"></spinner>-->
-            <spinner [backgroundColor]="'#b5142e'" [spinner]="spinnerComponent.Spinkit.skDoubleBounce"></spinner>
+                    <!-- <spinner [backgroundColor]="'#b5142e'" [spinner]="spinnerComponent.Spinkit.skDoubleBounce"></spinner> -->
             <!--<spinner [backgroundColor]="'#3f51b5'" [spinner]="spinnerComponent.Spinkit.skRotatingPlane"></spinner>-->
             <!--<spinner [backgroundColor]="'#3f51b5'" [spinner]="spinnerComponent.Spinkit.skSpinnerPulse"></spinner>-->
             <!--<spinner [backgroundColor]="'#3f51b5'" [spinner]="spinnerComponent.Spinkit.skThreeBounce"></spinner>-->
             <!--<spinner [backgroundColor]="'#3f51b5'" [spinner]="spinnerComponent.Spinkit.skWanderingCubes"></spinner>-->
             <!--<spinner [backgroundColor]="'#3f51b5'" [spinner]="spinnerComponent.Spinkit.skWave"></spinner>-->
-        </div>
+<!--         </div>
         <div fxFlex="18%" fxFlex.sm="7%" fxFlex.md="12%" fxHide.xs></div>
     </div>
-</div>
+</div> -->
