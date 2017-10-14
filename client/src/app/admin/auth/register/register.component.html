@@ -1,22 +1,22 @@
 <div class="padding">
     <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
         <div fxLayout="row" fxLayoutAlign="center center">
-            <md-input-container fxFlex="50%" style="padding:0 10px 0 0">
-                <input mdInput formControlName="email" type="email" placeholder="email"><!--disabled value="Google"-->
-                <md-error *ngIf="!signUpForm.get('email').valid && signUpForm.get('email').touched">
+            <mat-input-container fxFlex="50%" style="padding:0 10px 0 0">
+                <input matInput formControlName="email" type="email" placeholder="email"><!--disabled value="Google"-->
+                <mat-error *ngIf="!signUpForm.get('email').valid && signUpForm.get('email').touched">
                     <span *ngIf="signUpForm.get('email').errors.required">This field is required</span>
                     <span *ngIf="signUpForm.get('email').errors.email && !signUpForm.get('email').errors.required">Email is invalid</span>
-                </md-error>
-            </md-input-container>
-            <md-input-container fxFlex="50%" style="padding:0 0 0 10px">
-                <input mdInput formControlName="password" type="password" placeholder="password">
+                </mat-error>
+            </mat-input-container>
+            <mat-input-container fxFlex="50%" style="padding:0 0 0 10px">
+                <input matInput formControlName="password" type="password" placeholder="password">
                 <!--disabled value="Google"-->
-                <md-error *ngIf="!signUpForm.get('password').valid && signUpForm.get('password').touched">
+                <mat-error *ngIf="!signUpForm.get('password').valid && signUpForm.get('password').touched">
                     <span *ngIf="signUpForm.get('password').errors.required">This field is required</span>
-                </md-error>
-            </md-input-container>
+                </mat-error>
+            </mat-input-container>
         </div>
-        <button md-raised-button color="primary" [disabled]="!signUpForm.valid" type="submit">Submit</button>
+        <button mat-raised-button color="primary" [disabled]="!signUpForm.valid" type="submit">Submit</button>
         <!--(click)=""-->
     </form>
 </div>

@@ -1,19 +1,19 @@
 <div class="padding">
-    <md-tab-group>
-        <md-tab *ngIf="authenticationService.isUserAuthenticated()===false" label="Log In">
+    <mat-tab-group>
+        <mat-tab *ngIf="authenticationService.isUserAuthenticated()===false" label="Log In">
             <app-login></app-login>
-        </md-tab>
-        <md-tab *ngIf="authenticationService.isUserAuthenticated()===true" label="Fill content">
+        </mat-tab>
+        <mat-tab *ngIf="authenticationService.isUserAuthenticated()===true" label="Fill content">
             <app-admin-nav-component [hidden]="showContentChildren===true"></app-admin-nav-component>
             <router-outlet></router-outlet>
-        </md-tab>
-        <md-tab *ngIf="authenticationService.isUserAuthenticated()===true" label="Log out">
+        </mat-tab>
+        <mat-tab *ngIf="authenticationService.isUserAuthenticated()===true" label="Log out">
             <div fxLayout="row" fxLayoutAlign="start center" style="margin-top: 20px;">
-                <button md-raised-button color="primary" type="button" (click)="logout()">Logout</button>
+                <button mat-raised-button color="primary" type="button" (click)="logout()">Logout</button>
             </div>
-        </md-tab>
-        <md-tab *ngIf="authenticationService.isUserAuthenticated()===false" label="Register">
+        </mat-tab>
+        <mat-tab *ngIf="authenticationService.isUserAuthenticated()===false" label="Register">
             <app-register></app-register>
-        </md-tab>
-    </md-tab-group>
+        </mat-tab>
+    </mat-tab-group>
 </div>

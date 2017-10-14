@@ -7,7 +7,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import { NgHttpLoaderModule} from 'ng-http-loader/ng-http-loader.module';
 import {
-    MdTabsModule, MdButtonModule, MdInputModule, MdRadioModule, MdDialogModule, MdSnackBarModule, MdCardModule, MdAutocompleteModule
+    MatTabsModule, MatButtonModule, MatInputModule, MatRadioModule, MatDialogModule, MatSnackBarModule, MatCardModule, MatAutocompleteModule
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
@@ -37,7 +37,7 @@ import {BaseLocaleComponent} from "./base-locale/base-locale.component";
 import {Globals} from "../globals/globals";
 import {HeaderComponent} from "./header/header.component";
 import {MenuComponent} from "./header/menu/menu.component";
-import {MdSelectModule} from '@angular/material';
+import {MatSelectModule} from '@angular/material';
 import {NavigationService} from "app/nav-service/nav-service";
 import { SlideMenuModule } from 'cuppa-ng2-slidemenu/cuppa-ng2-slidemenu';
 import { CabinetComponent } from './brand/cabinet/cabinet.component';
@@ -81,7 +81,7 @@ import { EventsFormComponent } from './admin/admin-content/events-form/events-fo
         BrowserAnimationsModule,
         FlexLayoutModule,
         ReactiveFormsModule, FormsModule,
-        MdTabsModule, MdButtonModule, MdInputModule, MdRadioModule, MdDialogModule, MdSnackBarModule, MdSelectModule, SlideMenuModule, MdCardModule, MdAutocompleteModule
+        MatTabsModule, MatButtonModule, MatInputModule, MatRadioModule, MatDialogModule, MatSnackBarModule, MatSelectModule, SlideMenuModule, MatCardModule, MatAutocompleteModule
     ],
     entryComponents: [BaseLocaleComponent],
     providers: [AuthenticationService,

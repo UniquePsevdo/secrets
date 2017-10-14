@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {MdSnackBar} from '@angular/material';
+import {MatSnackBar} from '@angular/material';
 import {ErrorService} from "./error.service";
 import {SnackBarComponent} from '../snack-bar/snack-bar.component';
 import {ErrorComponent} from "./error.model";
@@ -12,7 +12,7 @@ import {ErrorComponent} from "./error.model";
 export class ErrorsComponent implements OnInit {
     error: ErrorComponent;
 
-    constructor(public notification: MdSnackBar, public errorService: ErrorService) {}
+    constructor(public notification: MatSnackBar, public errorService: ErrorService) {}
 
     ngOnInit() {
         this.errorService.errorOccured.subscribe(

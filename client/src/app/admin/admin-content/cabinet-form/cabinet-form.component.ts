@@ -7,6 +7,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/map';
+import {validateRegion} from "../../../validators/region-validator";
 
 @Component({
     selector: 'app-cabinet-form',
@@ -30,7 +31,7 @@ export class CabinetFormComponent implements OnInit, OnDestroy {
             if (state['start'] === false) {
                 this.dataService.setShowContentChildren(true);
                 this.regions = [
-                    {id: 1, name:'Одеська область.', flag:'./assets/images/flags/Coat_of_Arms_of_Odesa_Oblast.svg.png'},
+                    {id: 1, name:'Одеська область', flag:'./assets/images/flags/Coat_of_Arms_of_Odesa_Oblast.svg.png'},
                     {id: 2, name:'Дніпропетровська область', flag:'./assets/images/flags/Smaller_Coat_of_arms_of_Dnipropetrovsk_Oblast.svg.png'},
                     {id: 3, name:'Чернігівська область', flag:'./assets/images/flags/45px-Coat_of_Arms_of_Chernihiv_Oblast.png'},
                     {id: 4, name:'Харківська область', flag:'./assets/images/flags/COA_of_Kharkiv_Oblast.svg.png'},
@@ -57,7 +58,7 @@ export class CabinetFormComponent implements OnInit, OnDestroy {
                     {id: 25, name:'Чернівецька область', flag:'./assets/images/flags/Coat_of_Arms_of_Chernivtsi_Oblast.svg.png'}
                 ];
 
-                this.region = new FormControl(null, [Validators.required]);
+                this.region = new FormControl(null, [Validators.required, validateRegion]);
                 this.filteredRegions = this.region.valueChanges
                     .startWith(null)
                     .map(state => state ? this.filterRegions(state) : this.regions.slice());
@@ -87,11 +88,11 @@ export class CabinetFormComponent implements OnInit, OnDestroy {
     }
     /*
     Кабинет:
-    Название - строка
+    Название - строка+
     логотип - фотка
     фоточка на заставку в кабинет - фотка
     Краткое описание - текстареа
-    Физический адрес - разбить на отдельные поля
+    Физический адрес -
     Ссылки в интернете - массив строк
     Почта - email
     */
