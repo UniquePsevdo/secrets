@@ -221,3 +221,26 @@ body {
 		line-height: 30px;
 	}
 }
+
+.customClass {
+	background-color: #dfdfdf;
+	border-radius: 5px;
+	margin:5px;
+	width: 500px;
+}
+
+.customClass .img-ul-upload {
+	background-color: #7f0009 !important;
+}
+
+.customClass .img-ul-clear {
+	background-color: #7f0009 !important;
+}
+
+.customClass .img-ul-drag-box-msg {
+	color: #7f0009 !important;
+}
+
+.customClass .img-ul-container {
+	background-color: #b4364c !important;
+}
