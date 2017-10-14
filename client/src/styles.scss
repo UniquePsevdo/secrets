@@ -234,7 +234,7 @@ body {
 }
 
 .customClass .img-ul-clear {
-	background-color: #7f0009 !important;
+	background-color: #b4364c !important;
 }
 
 .customClass .img-ul-drag-box-msg {
@@ -243,4 +243,9 @@ body {
 
 .customClass .img-ul-container {
 	background-color: #b4364c !important;
+}
+
+.customClass label span{
+	text-transform:none;
+	font-size: 14px;
 }
