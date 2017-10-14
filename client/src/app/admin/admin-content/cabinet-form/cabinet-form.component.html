@@ -36,18 +36,31 @@
     </div>
     <div fxLayout="row" fxLayoutAlign="center center">
         <mat-input-container fxFlex="50%" style="padding:0 10px 0 0">
-            <input matInput formControlName="fullAddress" type="text" placeholder="{{'CABINET.full_address_ph' | translate}}">
-            <mat-error *ngIf="!cabinetForm.get('fullAddress').valid && cabinetForm.get('fullAddress').touched">
-                <span *ngIf="cabinetForm.get('fullAddress').errors.required">{{'FORMS.error_required' | translate}}</span>
-            </mat-error>
-        </mat-input-container>
-        <mat-input-container fxFlex="50%" style="padding:0 10px 0 0">
             <input matInput formControlName="email" type="email" placeholder="E-mail">
             <mat-error *ngIf="!cabinetForm.get('email').valid && cabinetForm.get('email').touched">
                 <span *ngIf="cabinetForm.get('email').errors.required">{{'FORMS.error_required' | translate}}</span>
                 <span *ngIf="cabinetForm.get('email').errors.email && !cabinetForm.get('email').errors.required">{{'FORMS.error_email' | translate}}</span>
             </mat-error>
         </mat-input-container>
+        <mat-input-container fxFlex="50%" style="padding:0 10px 0 0">
+            <input matInput formControlName="fullAddress" type="text" placeholder="{{'CABINET.full_address_ph' | translate}}">
+            <mat-error *ngIf="!cabinetForm.get('fullAddress').valid && cabinetForm.get('fullAddress').touched">
+                <span *ngIf="cabinetForm.get('fullAddress').errors.required">{{'FORMS.error_required' | translate}}</span>
+            </mat-error>
+        </mat-input-container>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center top">
+        <div fxFlex="50%" style="padding:0 10px 0 0">
+            <image-upload
+                    [class]="'customClass'"
+                (uploadFinished)="onLogoUploadFinished($event, 'logoImage')"></image-upload>
+        </div>
+        <div fxFlex="50%" style="padding:0 10px 0 0">
+            <image-upload
+                    [class]="'customClass'"
+                (uploadFinished)="onLogoUploadFinished($event, 'coverImage')"
+            ></image-upload>
+        </div>
     </div>
 </form>
 

@@ -47,6 +47,7 @@ import { CabinetFormComponent } from './admin/admin-content/cabinet-form/cabinet
 import { AdminNavComponentComponent } from './admin/admin-nav-component/admin-nav-component.component';
 import { ShowroomFormComponent } from './admin/admin-content/showroom-form/showroom-form.component';
 import { EventsFormComponent } from './admin/admin-content/events-form/events-form.component';
+import { ImageUploadModule } from "angular2-image-upload";
 
 @NgModule({
     declarations: [
@@ -76,6 +77,7 @@ import { EventsFormComponent } from './admin/admin-content/events-form/events-fo
                 useClass: CustomTranslateLoader
             }
         }),
+        ImageUploadModule.forRoot(),
         AppRoutingModule,
         StoreModule.forRoot(reducers),
         BrowserAnimationsModule,

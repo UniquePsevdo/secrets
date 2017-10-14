@@ -8,6 +8,7 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/map';
 import {validateRegion} from "../../../validators/region-validator";
+import {environment} from "../../../../environments/environment";
 
 @Component({
     selector: 'app-cabinet-form',
@@ -18,44 +19,136 @@ export class CabinetFormComponent implements OnInit, OnDestroy {
     routerSubscription: Subscription;
     cabinetForm: FormGroup;
     focusedFields: any;
-    email:FormControl;
+    email: FormControl;
     name: FormControl;
     region: FormControl;
     filteredRegions: Observable<any[]>;
     fullAddress: FormControl;
     description: FormControl;
     regions: any[];
+    logoUploadUrl: string = '';
+    logoImage: any;
+    coverImage: any;
 
     constructor(private store: Store<fromRoot.AppState>, private dataService: AdminInteractionData) {
         this.routerSubscription = this.store.select(fromRoot.getResetState).subscribe((state) => {
             if (state['start'] === false) {
+                this.logoUploadUrl = `${environment.apiUrl}/cabinet/logo`;
                 this.dataService.setShowContentChildren(true);
                 this.regions = [
-                    {id: 1, name:'Одеська область', flag:'./assets/images/flags/Coat_of_Arms_of_Odesa_Oblast.svg.png'},
-                    {id: 2, name:'Дніпропетровська область', flag:'./assets/images/flags/Smaller_Coat_of_arms_of_Dnipropetrovsk_Oblast.svg.png'},
-                    {id: 3, name:'Чернігівська область', flag:'./assets/images/flags/45px-Coat_of_Arms_of_Chernihiv_Oblast.png'},
-                    {id: 4, name:'Харківська область', flag:'./assets/images/flags/COA_of_Kharkiv_Oblast.svg.png'},
-                    {id: 5, name:'Житомирська область', flag:'./assets/images/flags/45px-Coat_of_Arms_of_Zhytomyr_Oblast.svg.png'},
-                    {id: 6, name:'Полтавська область', flag:'./assets/images/flags/Large_Coat_of_Arms_of_Poltava_Oblast.svg.png'},
-                    {id: 7, name:'Херсонська область', flag:'./assets/images/flags/Coat_of_Arms_of_Kherson_Oblast.svg.png'},
-                    {id: 8, name:'Київська область', flag:'./assets/images/flags/45px-Coat_of_Arms_of_Kyiv_Oblast.png'},
-                    {id: 9, name:'Запорізька область', flag:'./assets/images/flags/Coat_of_arms_of_Zaporizhia_Oblast.svg.png'},
-                    {id: 10, name:'Луганська область', flag:'./assets/images/flags/Coat_of_Arms_Luhansk_Oblast.svg.png'},
-                    {id: 11, name:'Донецька область', flag:'./assets/images/flags/Coat_of_Arms_of_Donetsk_Oblast_1999.svg.png'},
-                    {id: 12, name:'Вінницька область', flag:'./assets/images/flags/45px-Coat_of_Arms_of_Vinnytsia_Oblast.svg.png'},
-                    {id: 13, name:'Автономна Республіка Крим', flag:'./assets/images/flags/Emblem_of_Crimea.svg.png'},
-                    {id: 14, name:'Миколаївська область', flag:'./assets/images/flags/Coat_of_Arms_of_Mykolaiv_Oblast.svg.png'},
-                    {id: 15, name:'Кіровоградська область', flag:'./assets/images/flags/Coat_of_Arms_of_Kirovohrad_Oblast.svg.png'},
-                    {id: 16, name:'Сумська область', flag:'./assets/images/flags/Coat_of_Arms_of_Sumy_Oblast.svg.png'},
-                    {id: 17, name:'Львівська область', flag:'./assets/images/flags/45px-Coat_of_Arms_of_Lviv_Oblast.png'},
-                    {id: 18, name:'Черкаська область', flag:'./assets/images/flags/Coat_of_Arms_of_Cherkasy_Oblast.svg.png'},
-                    {id: 19, name:'Хмельницька область', flag:'./assets/images/flags/Coat_of_Arms_of_Khmelnytskyi_Oblast.svg.png'},
-                    {id: 20, name:'Волинська область', flag:'./assets/images/flags/Volyn_coat_of_arms.svg.png'},
-                    {id: 21, name:'Рівненська область', flag:'./assets/images/flags/45px-Coat_of_Arms_of_Rivne_Oblast.svg.png'},
-                    {id: 22, name:'Івано-Франківська область', flag:'./assets/images/flags/Coat_of_Arms_of_Ivano-Frankivsk_Oblast.svg.png'},
-                    {id: 23, name:'Тернопільська область', flag:'./assets/images/flags/Coat_of_Arms_of_Ternopil_Oblast.svg.png'},
-                    {id: 24, name:'Закарпатська область', flag:'./assets/images/flags/45px-CarpathianRutheniaCoA.svg.png'},
-                    {id: 25, name:'Чернівецька область', flag:'./assets/images/flags/Coat_of_Arms_of_Chernivtsi_Oblast.svg.png'}
+                    {
+                        id: 1,
+                        name: 'Одеська область',
+                        flag: './assets/images/flags/Coat_of_Arms_of_Odesa_Oblast.svg.png'
+                    },
+                    {
+                        id: 2,
+                        name: 'Дніпропетровська область',
+                        flag: './assets/images/flags/Smaller_Coat_of_arms_of_Dnipropetrovsk_Oblast.svg.png'
+                    },
+                    {
+                        id: 3,
+                        name: 'Чернігівська область',
+                        flag: './assets/images/flags/45px-Coat_of_Arms_of_Chernihiv_Oblast.png'
+                    },
+                    {id: 4, name: 'Харківська область', flag: './assets/images/flags/COA_of_Kharkiv_Oblast.svg.png'},
+                    {
+                        id: 5,
+                        name: 'Житомирська область',
+                        flag: './assets/images/flags/45px-Coat_of_Arms_of_Zhytomyr_Oblast.svg.png'
+                    },
+                    {
+                        id: 6,
+                        name: 'Полтавська область',
+                        flag: './assets/images/flags/Large_Coat_of_Arms_of_Poltava_Oblast.svg.png'
+                    },
+                    {
+                        id: 7,
+                        name: 'Херсонська область',
+                        flag: './assets/images/flags/Coat_of_Arms_of_Kherson_Oblast.svg.png'
+                    },
+                    {
+                        id: 8,
+                        name: 'Київська область',
+                        flag: './assets/images/flags/45px-Coat_of_Arms_of_Kyiv_Oblast.png'
+                    },
+                    {
+                        id: 9,
+                        name: 'Запорізька область',
+                        flag: './assets/images/flags/Coat_of_arms_of_Zaporizhia_Oblast.svg.png'
+                    },
+                    {
+                        id: 10,
+                        name: 'Луганська область',
+                        flag: './assets/images/flags/Coat_of_Arms_Luhansk_Oblast.svg.png'
+                    },
+                    {
+                        id: 11,
+                        name: 'Донецька область',
+                        flag: './assets/images/flags/Coat_of_Arms_of_Donetsk_Oblast_1999.svg.png'
+                    },
+                    {
+                        id: 12,
+                        name: 'Вінницька область',
+                        flag: './assets/images/flags/45px-Coat_of_Arms_of_Vinnytsia_Oblast.svg.png'
+                    },
+                    {id: 13, name: 'Автономна Республіка Крим', flag: './assets/images/flags/Emblem_of_Crimea.svg.png'},
+                    {
+                        id: 14,
+                        name: 'Миколаївська область',
+                        flag: './assets/images/flags/Coat_of_Arms_of_Mykolaiv_Oblast.svg.png'
+                    },
+                    {
+                        id: 15,
+                        name: 'Кіровоградська область',
+                        flag: './assets/images/flags/Coat_of_Arms_of_Kirovohrad_Oblast.svg.png'
+                    },
+                    {
+                        id: 16,
+                        name: 'Сумська область',
+                        flag: './assets/images/flags/Coat_of_Arms_of_Sumy_Oblast.svg.png'
+                    },
+                    {
+                        id: 17,
+                        name: 'Львівська область',
+                        flag: './assets/images/flags/45px-Coat_of_Arms_of_Lviv_Oblast.png'
+                    },
+                    {
+                        id: 18,
+                        name: 'Черкаська область',
+                        flag: './assets/images/flags/Coat_of_Arms_of_Cherkasy_Oblast.svg.png'
+                    },
+                    {
+                        id: 19,
+                        name: 'Хмельницька область',
+                        flag: './assets/images/flags/Coat_of_Arms_of_Khmelnytskyi_Oblast.svg.png'
+                    },
+                    {id: 20, name: 'Волинська область', flag: './assets/images/flags/Volyn_coat_of_arms.svg.png'},
+                    {
+                        id: 21,
+                        name: 'Рівненська область',
+                        flag: './assets/images/flags/45px-Coat_of_Arms_of_Rivne_Oblast.svg.png'
+                    },
+                    {
+                        id: 22,
+                        name: 'Івано-Франківська область',
+                        flag: './assets/images/flags/Coat_of_Arms_of_Ivano-Frankivsk_Oblast.svg.png'
+                    },
+                    {
+                        id: 23,
+                        name: 'Тернопільська область',
+                        flag: './assets/images/flags/Coat_of_Arms_of_Ternopil_Oblast.svg.png'
+                    },
+                    {
+                        id: 24,
+                        name: 'Закарпатська область',
+                        flag: './assets/images/flags/45px-CarpathianRutheniaCoA.svg.png'
+                    },
+                    {
+                        id: 25,
+                        name: 'Чернівецька область',
+                        flag: './assets/images/flags/Coat_of_Arms_of_Chernivtsi_Oblast.svg.png'
+                    }
                 ];
 
                 this.region = new FormControl(null, [Validators.required, validateRegion]);
@@ -71,21 +164,22 @@ export class CabinetFormComponent implements OnInit, OnDestroy {
                 this.focusedFields = {
                     email: false,
                     name: false,
-                    fullAddress:false,
+                    fullAddress: false,
                     description: false
                 }
                 this.cabinetForm = new FormGroup(
                     {
                         'email': this.email,
                         'name': this.name,
-                        'fullAddress':this.fullAddress,
+                        'fullAddress': this.fullAddress,
                         'description': this.description,
-                        'region':this.region
+                        'region': this.region
                     }
                 )
             }
         })
     }
+
     /*
     Кабинет:
     Название - строка+
@@ -99,13 +193,25 @@ export class CabinetFormComponent implements OnInit, OnDestroy {
     ngOnInit() {
     }
 
+    onLogoUploadFinished(event, imageKey) {
+        this.readThis(event.file, imageKey);
+    }
+
+    readThis(file: File, imageKey): void {
+        var fileReader: FileReader = new FileReader();
+        fileReader.onloadend = (e) => {
+            this[imageKey] = fileReader.result;
+        }
+        fileReader.readAsDataURL(file);
+    }
+
     filterRegions(name: string) {
         return this.regions.filter(state =>
             state.name.toLowerCase().indexOf(name.toLowerCase()) === 0);
     }
 
-    ngOnDestroy(){
-        if(this.routerSubscription){
+    ngOnDestroy() {
+        if (this.routerSubscription) {
             this.routerSubscription.unsubscribe()
         }
     }
