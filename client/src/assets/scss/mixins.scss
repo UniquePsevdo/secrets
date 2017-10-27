@@ -291,6 +291,16 @@
 }
 /* @include align-items-center; */
 
+/* Flex-box (align-items: end) */
+@mixin justify-end {
+	-webkit-box-pack: end;
+	-webkit-justify-content: flex-end;
+	-moz-box-pack: end;
+	-ms-flex-pack: end;
+	justify-content: flex-end;
+}
+/* @include justify-end; */
+
 /* Flex-box (flex-direction: column) */
 @mixin flex-direction-column {
 	-webkit-box-orient: vertical;
