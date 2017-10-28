@@ -28,7 +28,29 @@
 				"prod": "environments/environment.prod.ts",
 				"local": "environments/environment.local.ts"
 			}
-		}
+		},
+        /* Add this second config */
+        {
+            /* Give it a name for easier use */
+            "name": "universal",
+            /* Tell the CLI to package for the server */
+            "platform": "server",
+            "root": "src",
+            /* Change the output directory to not mix with browser files, and add it to your .gitignore */
+            "outDir": "dist-server",
+            /* Server will use a different entry point */
+            "main": "main-server.ts",
+            /* Server will use a different TypeScript config */
+            "tsconfig": "tsconfig.server.json",
+            "environmentSource": "environments/environment.ts",
+            "environments": {
+                "dev": "environments/environment.ts",
+                "prod": "environments/environment.prod.ts"
+            }
+            /* Delete polyfills, the server does not need them */
+            /* Other properties like assets, styles, scripts... can be removed,
+             * they are already generated for the browser, so build will be faster */
+        }
 	],
 	"e2e": {
 		"protractor": {

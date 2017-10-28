@@ -70,7 +70,9 @@ import { ImageUploadModule } from "angular2-image-upload";
         EventsFormComponent
     ],
     imports: [
-        BrowserModule, HttpModule, HttpClientModule, AuthenticationModule, NgHttpLoaderModule,
+        BrowserModule,
+        BrowserModule.withServerTransition({ appId: 'teytrhgjkhdfvtsudygtuksjdrhlfgihoseltrdugfh;osldbyoyive' }),
+        HttpModule, HttpClientModule, AuthenticationModule, NgHttpLoaderModule,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
