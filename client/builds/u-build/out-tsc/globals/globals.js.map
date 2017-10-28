@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../src/globals/globals.ts"],"names":[],"mappings":";;AAAA,sCAAyC;AAGzC;IAAA;QACW,gBAAW,GAAW,EAAE,CAAC;QACzB,SAAI,GAAW,EAAE,CAAC;IAO7B,CAAC;IAAD,cAAC;AAAD,CATA,AASC;AANM,kBAAU,GAA0B;IAC3C,EAAE,IAAI,EAAE,iBAAU,EAAE;CACnB,CAAC;AACF,kBAAkB;AACX,sBAAc,GAAmE,cAAM,OAAA,EAC7F,EAD6F,CAC7F,CAAC;AARW,0BAAO","file":"globals.js","sourceRoot":""}

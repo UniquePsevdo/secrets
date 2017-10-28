@@ -52,7 +52,7 @@ export class AuthenticationService implements AuthService {
         return this.tokenStorage
             .getRefreshToken()
             .switchMap((refreshToken: string) => {
-                return this.http.post(`${environment.apiUrl}${environment.refresh_endpoint}`, { refreshToken });
+                return this.http.post(`${environment["apiUrl"]}${environment["refresh_endpoint"]}`, { refreshToken });
             })
             .do(this.saveAccessData.bind(this))
             .catch((err) => {

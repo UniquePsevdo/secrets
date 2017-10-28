@@ -39,7 +39,6 @@ import {HeaderComponent} from "./header/header.component";
 import {MenuComponent} from "./header/menu/menu.component";
 import {MatSelectModule} from '@angular/material';
 import {NavigationService} from "app/nav-service/nav-service";
-import { SlideMenuModule } from 'cuppa-ng2-slidemenu/cuppa-ng2-slidemenu';
 import { CabinetComponent } from './brand/cabinet/cabinet.component';
 import { ShowroomComponent } from './brand/showroom/showroom.component';
 import { EventsComponent } from './brand/events/events.component';
@@ -71,7 +70,8 @@ import { ImageUploadModule } from "angular2-image-upload";
     ],
     imports: [
         BrowserModule,
-        BrowserModule.withServerTransition({ appId: 'teytrhgjkhdfvtsudygtuksjdrhlfgihoseltrdugfh;osldbyoyive' }),
+        BrowserModule.withServerTransition({
+                appId: 'secrets'}),
         HttpModule, HttpClientModule, AuthenticationModule, NgHttpLoaderModule,
         TranslateModule.forRoot({
             loader: {
@@ -85,7 +85,7 @@ import { ImageUploadModule } from "angular2-image-upload";
         BrowserAnimationsModule,
         FlexLayoutModule,
         ReactiveFormsModule, FormsModule,
-        MatTabsModule, MatButtonModule, MatInputModule, MatRadioModule, MatDialogModule, MatSnackBarModule, MatSelectModule, SlideMenuModule, MatCardModule, MatAutocompleteModule
+        MatTabsModule, MatButtonModule, MatInputModule, MatRadioModule, MatDialogModule, MatSnackBarModule, MatSelectModule, MatCardModule, MatAutocompleteModule
     ],
     entryComponents: [BaseLocaleComponent],
     providers: [AuthenticationService,

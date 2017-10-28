@@ -21,7 +21,7 @@ export class AdminComponent implements OnInit, OnDestroy {
     navParams: any;
 
     constructor(private store: Store<fromRoot.AppState>, private dataService: AdminInteractionData,
-                private authenticationService: AuthenticationService, private navigationService: NavigationService) {
+                public authenticationService: AuthenticationService, private navigationService: NavigationService) {
         this.routerSubscription = this.store.select(fromRoot.getResetState).subscribe((state) => {
             if (state['start'] === false) {
                 //this.dataService.setShowContentChildren(false);
