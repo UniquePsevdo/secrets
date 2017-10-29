@@ -34,7 +34,7 @@
         {
             "name": "universal",
             "root": "src",
-            "outDir": "./builds/u-build",
+            "outDir": "./builds/u-build/browser",
             "platform": "server",
             "main": "main-server.ts",
             "tsconfig": "tsconfig.server.json",
