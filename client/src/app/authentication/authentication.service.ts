@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { AuthService } from 'ngx-auth';
 import {environment} from '../../environments/environment';
 import { TokenStorage } from './token-storage.service';
+import 'rxjs/add/operator/do';
 
 interface AccessData {
     token: string;
