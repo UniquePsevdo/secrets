@@ -32,10 +32,15 @@
             }
         },
         {
+            "platform": "server",
             "name": "universal",
             "root": "src",
             "outDir": "./builds/u-build/browser",
-            "platform": "server",
+            "assets": [
+                "assets",
+                "favicon.ico"
+            ],
+            "index": "index.html",
             "main": "main-server.ts",
             "tsconfig": "tsconfig.server.json",
             "testTsconfig": "tsconfig.spec.json",
