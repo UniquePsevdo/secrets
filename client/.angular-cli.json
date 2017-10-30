@@ -35,7 +35,7 @@
             "platform": "server",
             "name": "universal",
             "root": "src",
-            "outDir": "./builds/u-build/browser",
+            "outDir": "./builds/univ-build/browser",
             "assets": [
                 "assets",
                 "favicon.ico"

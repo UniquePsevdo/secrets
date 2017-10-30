@@ -8,12 +8,23 @@ module.exports = {
     // this makes sure we include node_modules and other 3rd party libraries
     externals: [/(node_modules|main\..*\.js)/],
     output: {
-        path: path.join(__dirname, 'builds/u-build'),
+        path: path.join(__dirname, 'builds/univ-build'),
         filename: '[name].js'
     },
     module: {
         rules: [
-            { test: /\.ts$/, loader: 'ts-loader' }
+            { test: /\.ts$/,
+                use: [
+                    {
+                        loader: 'ts-loader',
+                        options: {
+                            transpileOnly: true,
+                            compilerOptions:{
+                                "noEmitOnError": true
+                            }
+                        }
+                    }
+                ] }
         ]
     },
     plugins: [

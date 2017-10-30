@@ -8,9 +8,10 @@
     "local": "ng serve --environment=local",
     "dev-build": "ng build --dev --output-path=builds/dev-build",
     "prod-build": "ng build --prod --aot --no-sourcemap --output-path=builds/prod-build",
-    "univ-build": "ng build --prod --aot=false --no-sourcemap --app universal --verbose --output-hashing=none",
+    "univ-build": "ng build --prod --aot=false --app universal --verbose --output-hashing=none --output-path=builds/univ-build/browser",
     "bundle-report": "webpack-bundle-analyzer builds/prod-build/stats.json",
     "ngc:server": "ngc -p src/tsconfig.server.json",
+    "webpack:server": "webpack --config webpack.server.config.js --progress --colors",
     "test": "karma start ./karma.conf.js",
     "lint": "ng lint",
     "e2e": "protractor ./protractor.conf.js",
@@ -50,8 +51,8 @@
     "ng-http-loader": "^0.2.0",
     "ngx-auth": "^2.0.2",
     "rxjs": "^5.1.0",
-    "ts-loader": "^3.1.0",
-    "typescript": "~2.3.3",
+    "ts-loader": "^3.1.1",
+    "typescript": "^2.5.3",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
