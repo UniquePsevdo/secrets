@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {SpinnerComponent} from "ng-http-loader/spinner/spinner.component";
+import {SpinnerComponent} from "ng-http-loader/components/spinner/spinner.component";
 import {TranslateService} from "@ngx-translate/core";
 import {Subscription} from "rxjs/Subscription";
 import {Meta} from "@angular/platform-browser";

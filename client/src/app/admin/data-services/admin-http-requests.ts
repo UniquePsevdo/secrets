@@ -2,21 +2,15 @@ import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
 import {environment} from '../../../environments/environment';
 import {tokenNotExpired} from 'angular2-jwt';
-import {Subject} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 
 import {ErrorService} from '../../errors/error.service';
 
 @Injectable()
 export class AdminHttpRequests {
-    requireLoginSubject: Subject<boolean>;
-    tokenIsBeingRefreshed: Subject<boolean>;
     lastUrl: string;
 
     constructor(private http: HttpClient, private router: Router, private errorService: ErrorService) {
-        this.requireLoginSubject = new Subject<boolean>();
-        this.tokenIsBeingRefreshed = new Subject<boolean>();
-        this.tokenIsBeingRefreshed.next(false);
         this.lastUrl = "/admin";
     }
 

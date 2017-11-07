@@ -17,5 +17,9 @@
 			"es2016",
 			"dom"
 		]
-	}
+	},
+    "include": [
+        "src/**/*",
+        "node_modules/ngx-auth/index.ts"
+    ]
 }

@@ -1,7 +1,7 @@
 {
     "extends": "../tsconfig.json",
     "compilerOptions": {
-        "outDir": "../builds/univ-build/server/out-tsc",
+        "outDir": "../builds/univ-build/out-tsc/app",
         "baseUrl": "./",
         "module": "commonjs",
         "types": []
@@ -11,7 +11,6 @@
         "**/*.spec.ts"
     ],
     "angularCompilerOptions": {
-        "genDir": "../builds/univ-build/server/ngfactory",
         "skipCodeGeneration": false,
         "skipMetadataEmit" : true,
         "entryModule": "app/app.server.module#AppServerModule"

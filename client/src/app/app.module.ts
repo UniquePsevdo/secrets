@@ -30,7 +30,7 @@ import {ErrorService} from "./errors/error.service";
 import {AuthenticationService} from "./authentication/authentication.service";
 import {AuthenticationModule} from "./authentication/authentication.module";
 import {RefreshAuthInterceptor} from "./authentication/refresh-authInterceptor";
-import {SpinnerComponent} from "ng-http-loader/spinner/spinner.component";
+import {SpinnerComponent} from "ng-http-loader/components/spinner/spinner.component";
 import {CustomTranslateLoader} from "./translate-loader";
 import {StoreModule} from "@ngrx/store";
 import {BaseLocaleComponent} from "./base-locale/base-locale.component";
