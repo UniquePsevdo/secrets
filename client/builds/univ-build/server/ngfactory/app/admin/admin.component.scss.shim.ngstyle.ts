@@ -6,5 +6,5 @@
  /* tslint:disable */
 
 
-export const styles:any[] = ['.padding[_ngcontent-%COMP%]{\r\n	padding-top: 20px;\r\n}'];
-//# sourceMappingURL=data:application/json;base64,eyJmaWxlIjoiRjovUHJvZ3JhbW1pbmcvc2VjcmV0cy9jbGllbnQvc3JjL2FwcC9hZG1pbi9hZG1pbi5jb21wb25lbnQuc2Nzcy5zaGltLm5nc3R5bGUudHMiLCJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJuZzovLy9GOi9Qcm9ncmFtbWluZy9zZWNyZXRzL2NsaWVudC9zcmMvYXBwL2FkbWluL2FkbWluLmNvbXBvbmVudC5zY3NzIl0sInNvdXJjZXNDb250ZW50IjpbIiAiXSwibWFwcGluZ3MiOiJBQUFBOzs7Ozs7OzsifQ==
+export const styles:any[] = ['.padding[_ngcontent-%COMP%]{\n	padding-top: 20px;\n}'];
+//# sourceMappingURL=data:application/json;base64,eyJmaWxlIjoiL2hvbWUvdm92YS9Qcm9qZWN0cy9zZWNyZXRzL2NsaWVudC9zcmMvYXBwL2FkbWluL2FkbWluLmNvbXBvbmVudC5zY3NzLnNoaW0ubmdzdHlsZS50cyIsInZlcnNpb24iOjMsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIm5nOi8vL2hvbWUvdm92YS9Qcm9qZWN0cy9zZWNyZXRzL2NsaWVudC9zcmMvYXBwL2FkbWluL2FkbWluLmNvbXBvbmVudC5zY3NzIl0sInNvdXJjZXNDb250ZW50IjpbIiAiXSwibWFwcGluZ3MiOiJBQUFBOzs7Ozs7OzsifQ==

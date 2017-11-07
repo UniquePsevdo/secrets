@@ -6,5 +6,5 @@
  /* tslint:disable */
 
 
-export const styles:any[] = ['.padding[_ngcontent-%COMP%]{\r\n	padding-top: 20px;\r\n}'];
-//# sourceMappingURL=data:application/json;base64,eyJmaWxlIjoiRjovUHJvZ3JhbW1pbmcvc2VjcmV0cy9jbGllbnQvc3JjL2FwcC9hZG1pbi9hdXRoL2xvZ2luL2xvZ2luLmNvbXBvbmVudC5zY3NzLnNoaW0ubmdzdHlsZS50cyIsInZlcnNpb24iOjMsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIm5nOi8vL0Y6L1Byb2dyYW1taW5nL3NlY3JldHMvY2xpZW50L3NyYy9hcHAvYWRtaW4vYXV0aC9sb2dpbi9sb2dpbi5jb21wb25lbnQuc2NzcyJdLCJzb3VyY2VzQ29udGVudCI6WyIgIl0sIm1hcHBpbmdzIjoiQUFBQTs7Ozs7Ozs7In0=
+export const styles:any[] = ['.padding[_ngcontent-%COMP%]{\n	padding-top: 20px;\n}'];
+//# sourceMappingURL=data:application/json;base64,eyJmaWxlIjoiL2hvbWUvdm92YS9Qcm9qZWN0cy9zZWNyZXRzL2NsaWVudC9zcmMvYXBwL2FkbWluL2F1dGgvbG9naW4vbG9naW4uY29tcG9uZW50LnNjc3Muc2hpbS5uZ3N0eWxlLnRzIiwidmVyc2lvbiI6Mywic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsibmc6Ly8vaG9tZS92b3ZhL1Byb2plY3RzL3NlY3JldHMvY2xpZW50L3NyYy9hcHAvYWRtaW4vYXV0aC9sb2dpbi9sb2dpbi5jb21wb25lbnQuc2NzcyJdLCJzb3VyY2VzQ29udGVudCI6WyIgIl0sIm1hcHBpbmdzIjoiQUFBQTs7Ozs7Ozs7In0=
