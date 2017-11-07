@@ -1,21 +1,33 @@
-import 'reflect-metadata';
 import 'zone.js/dist/zone-node';
-import { platformServer, renderModuleFactory } from '@angular/platform-server';
+import 'reflect-metadata';
+
+import { renderModuleFactory } from '@angular/platform-server';
 import { enableProdMode } from '@angular/core';
+
 import * as express from 'express';
-import { readFileSync } from 'fs';
 import { join } from 'path';
-
-const PORT = 4000;
-const DIST_FOLDER = join(process.cwd(), 'builds/u-build');
-
+import { readFileSync } from 'fs';
+const fs = require('fs');
+// Faster server renders w/ Prod mode (dev mode never needed)
 enableProdMode();
 
+// Express server
 const app = express();
 
-const template = readFileSync(join('builds', 'prod-build', 'index.html')).toString();
+const PORT = process.env.PORT || 4000;
+const DIST_FOLDER = join(process.cwd(), 'builds');
 
-const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('./builds/univ-build/main.bundle');
+// Our index.html we'll use as our template
+const template = readFileSync(join(DIST_FOLDER, 'prod-build', 'index.html')).toString();
+
+function getHash() {
+    const files = fs.readdirSync(`${process.cwd()}/builds/prod-build`);
+    const mainFiles = files.filter(file => file.startsWith('main'));
+    return mainFiles[0].split('.')[1];
+}
+
+// * NOTE :: leave this as require() since this file is built Dynamically from webpack
+const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('./builds/prod-build/main.'+getHash()+'.bundle');
 
 const { provideModuleMap } = require('@nguniversal/module-map-ngfactory-loader');
 
@@ -33,24 +45,18 @@ app.engine('html', (_, options, callback) => {
     });
 });
 
-app.engine('html', (_, options, callback) => {
-    const opts = { document: template, url: options.req.url };
-
-    renderModuleFactory(AppServerModuleNgFactory, opts)
-        .then(html => callback(null, html));
-});
-
-//todo: check and fix paths!!!
-
 app.set('view engine', 'html');
-app.set('views', join(DIST_FOLDER, 'builds', 'prod-build'));
+app.set('views', join(DIST_FOLDER, 'prod-build'));
 
-app.get('*.*', express.static(join(DIST_FOLDER, 'builds', 'prod-build')));
+// Server static files from /browser
+app.get('*.*', express.static(join(DIST_FOLDER, 'prod-build')));
 
+// All regular routes use the Universal engine
 app.get('*', (req, res) => {
-    res.render(join(DIST_FOLDER, 'builds', 'prod-build', 'index.html'), { req });
+    res.render(join(DIST_FOLDER, 'prod-build', 'index.html'), { req });
 });
 
+// Start up the Node server
 app.listen(PORT, () => {
-    console.log(`listening on http://localhost:${PORT}!`);
+    console.log(`Node server listening on http://localhost:${PORT}`);
 });
