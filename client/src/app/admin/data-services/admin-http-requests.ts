@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
 import {environment} from '../../../environments/environment';
-import {tokenNotExpired} from 'angular2-jwt';
+import {tokenNotExpired} from 'angular2-jwt';   /*without http*/
 import {HttpClient} from '@angular/common/http';
 
 import {ErrorService} from '../../errors/error.service';
